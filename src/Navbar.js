@@ -120,27 +120,27 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                             <hr></hr>
                             <h5>Examples</h5>
                             <div className="row example">
-                                <div className="letter-tile correct">H</div>
-                                <div className="letter-tile absent">E</div>
-                                <div className="letter-tile absent">A</div>
-                                <div className="letter-tile absent">R</div>
-                                <div className="letter-tile absent">D</div>
+                                <div className="letter-tile correct" style={{color: textColor}}>H</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>E</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>A</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>R</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>D</div>
                             </div>
                             <p>The letter <strong>H</strong> is in the word and in the correct spot.</p>
                             <div className="row example">
-                                <div className="letter-tile absent">P</div>
-                                <div className="letter-tile present">I</div>
-                                <div className="letter-tile absent">Z</div>
-                                <div className="letter-tile absent">Z</div>
-                                <div className="letter-tile absent">A</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>P</div>
+                                <div className="letter-tile present" style={{color: textColor}}>I</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>Z</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>Z</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>A</div>
                             </div>
                             <p>The letter <strong>I</strong> is in the word but in the wrong spot.</p>
                             <div className="row example">
-                                <div className="letter-tile absent">A</div>
-                                <div className="letter-tile absent">B</div>
-                                <div className="letter-tile absent">O</div>
-                                <div className="letter-tile absent">V</div>
-                                <div className="letter-tile absent">E</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>A</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>B</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>O</div>
+                                <div className="letter-tile absent" style={{color: textColor}}>V</div>
+                                <div className="letter-tile empty" style={{backgroundColor: bgColor, color: textColor}}>E</div>
                             </div>
                             <p>The letter <strong>V</strong> is not in the word in any spot.</p>
                         </BS.Modal.Body>

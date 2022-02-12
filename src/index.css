@@ -20,20 +20,28 @@ body {
   justify-content: center;
   align-items: center;
   display: inline-flex;
-  font-size: 50px;
+  font-size: 35px;
   color: white;
 } 
 
 .correct {
   background-color: #538d4f;
+  border: solid #538d4f;
 }
 
 .present {
   background-color: #b59f3b;
+  border: solid #b59f3b;
 }
 
 .absent {
-  background-color: #3a3a3c;
+  background-color: #8e8e88;
+  border: solid #8e8e88;
+}
+
+.empty {
+  background-color: black;
+  border: solid black;
 }
 
 .example {
@@ -42,4 +50,10 @@ body {
 
 .home-button {
   color: white
+}
+
+.container {
+  max-width: max-content;
+  margin: 1rem auto;
+ 
 }
