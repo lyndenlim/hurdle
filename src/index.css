@@ -7,33 +7,21 @@ body {
   z-index: 1 !important;
 }
 
-.favorite-bar {
-  background-color: black !important;
-}
-
 .buttons {
   margin-left: auto !important;
 }
 
-.button-color {
-  color: white !important;
-}
-
-.logo {
-
-}
-
 .letter-tile {
-  border-style: solid;
-  border-radius: 2px;
+  border: 3px solid grey;
   height: 65px;
   width: 65px;
+  margin: 2px;
   font-weight: bold;
   justify-content: center;
   align-items: center;
   display: inline-flex;
   font-size: 50px;
-  color: white
+  color: white;
 } 
 
 .correct {

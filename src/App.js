@@ -18,7 +18,7 @@ function App() {
           <LetterContainer textColor={textColor}/>
         </Route>
         <Route exact path="/favorites">
-          <Favorites bgColor={bgColor}/>
+          <Favorites bgColor={bgColor} textColor={textColor}/>
         </Route>
       </Switch>
     </div>

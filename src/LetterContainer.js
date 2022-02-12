@@ -2,39 +2,39 @@ function LetterContainer({ textColor }) {
     return (
         <div className="container">
             <div className="row">
-                <div className="letter-tile" style={{ backgroundColor: textColor }} ></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
+                <div className="letter-tile" style={{ color: textColor }} ></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
             </div>
             <div className="row">
-                <div className="letter-tile" style={{ backgroundColor: textColor }}></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
             </div>
             <div className="row">
-                <div className="letter-tile" style={{ backgroundColor: textColor }}></div>
-                <div className="letter-tile" style={{ backgroundColor: textColor }}>H</div>
-                <div className="letter-tile">E</div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}>H</div>
+                <div className="letter-tile" style={{ color: textColor }}>E</div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
             </div>
             <div className="row">
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
             </div>
             <div className="row">
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
-                <div className="letter-tile"></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
+                <div className="letter-tile" style={{ color: textColor }}></div>
             </div>
         </div>
     )
