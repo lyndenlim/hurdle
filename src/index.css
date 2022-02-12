@@ -3,9 +3,12 @@ body {
 }
 
 .appbar {
-  background: black !important;
   /* Allows for modal to be brought to front of appbar */
   z-index: 1 !important;
+}
+
+.favorite-bar {
+  background-color: black !important;
 }
 
 .buttons {
