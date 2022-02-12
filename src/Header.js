@@ -1,23 +1,11 @@
 import * as Mui from '@mui/material'
+import * as BS from 'react-bootstrap'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
 import { useState } from "react"
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: '#81817f',
-    color: "white",
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    textAlign: "center"
-};
 
 const IOSSwitch = styled((props) => (
     <Mui.Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -72,20 +60,32 @@ const IOSSwitch = styled((props) => (
 
 
 function Header() {
-    const [open, setOpen] = useState(false)
+    const [openSettings, setOpenSettings] = useState(false)
+    const [openInfo, setOpenInfo] = useState(false)
     const [isDark, setIsDark] = useState(true)
 
-    function handleOpen() {
-        setOpen(open => !open)
+
+
+    function handleOpenSettings() {
+        setOpenSettings(openSettings => !openSettings)
     }
 
-    function handleClose() {
-        setOpen(open => !open)
+    function handleCloseSettings() {
+        setOpenSettings(openSettings => !openSettings)
     }
 
     function handleDarkMode() {
         setIsDark(isDark => !isDark)
     }
+
+    function handleOpenInfo() {
+        setOpenInfo(openInfo => !openInfo)
+    }
+
+    function handleCloseInfo() {
+        setOpenInfo(openInfo => !openInfo)
+    }
+
 
     return (
         <Mui.AppBar className="appbar" >
@@ -94,28 +94,61 @@ function Header() {
                     Hurdle
                 </Mui.Typography>
                 <div className="buttons">
-                    <Mui.Button className="buttonColor" >
+                    <Mui.Button className="buttonColor" onClick={handleOpenInfo} >
                         <HelpOutlineIcon />
                     </Mui.Button>
+                    <BS.Modal
+                        size="lg"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                        show={openInfo}
+                        onHide={handleCloseInfo}
+                    >
+                        <BS.Modal.Header closeButton>
+                            <BS.Modal.Title id="contained-modal-title-vcenter">
+                                HOW TO PLAY
+                            </BS.Modal.Title>
+                        </BS.Modal.Header>
+                        <BS.Modal.Body>
+                            <p>Guess the word in 6 tries.</p>
+                            <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+                            <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+                            <hr></hr>
+                            <h5>Examples</h5>
+                            <p>HITCH</p>
+                            <p>The letter <strong>H</strong> is in the word and in the correct spot.</p>
+                            <p>PIZZA</p>
+                            <p>The letter <strong>I</strong> is in the word but in the wrong spot.</p>
+                            <p>ABOVE</p>
+                            <p>The letter <strong>V</strong> is not in the word in any spot.</p>
+                        </BS.Modal.Body>
+                    </BS.Modal>
                     <Mui.Button className="buttonColor">
                         <BookmarkBorderIcon />
                     </Mui.Button>
-                    <Mui.Button className="buttonColor" onClick={handleOpen}>
+                    <Mui.Button className="buttonColor" onClick={handleOpenSettings}>
                         <SettingsIcon />
                     </Mui.Button>
-                    <Mui.Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
+                    <BS.Modal
+                        size="sm"
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                        show={openSettings}
+                        onHide={handleCloseSettings}
+                        align="center"
+                        
                     >
-                        <Mui.Box sx={style}>
+                        <BS.Modal.Header closeButton>
+                            <BS.Modal.Title id="contained-modal-title-vcenter">
+                                Settings
+                            </BS.Modal.Title>
+                        </BS.Modal.Header>
+                        <BS.Modal.Body >
                             {isDark ? "Dark Mode" : "Light Mode"} <IOSSwitch sx={{ m: 1 }} defaultChecked onClick={handleDarkMode} />
-                            <Mui.Typography id="modal-modal-description" sx={{ mt: 2 }}>
-
-                            </Mui.Typography>
-                        </Mui.Box>
-                    </Mui.Modal>
+                            <p></p>
+                            <p><BS.Button size="small" variant="danger">Reset Favorites</BS.Button></p>
+                        </BS.Modal.Body>
+                    </BS.Modal>
                 </div>
             </Mui.Toolbar>
         </Mui.AppBar>
