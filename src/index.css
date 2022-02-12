@@ -20,7 +20,7 @@ body {
 }
 
 .logo {
-  margin-left: auto !important;
+
 }
 
 .letter-tile {
@@ -33,21 +33,19 @@ body {
   align-items: center;
   display: inline-flex;
   font-size: 50px;
+  color: white
 } 
 
 .correct {
   background-color: #538d4f;
-  color: white;
 }
 
 .present {
   background-color: #b59f3b;
-  color: white;
 }
 
 .absent {
   background-color: #3a3a3c;
-  color: white;
 }
 
 .example {
