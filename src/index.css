@@ -1,19 +1,53 @@
 body {
-  background-color: black !important;
+  background-color: black ;
 }
 
 .appbar {
   background: black !important;
+  /* Allows for modal to be brought to front of appbar */
+  z-index: 1 !important;
 }
 
 .buttons {
   margin-left: auto !important;
 }
 
-.buttonColor {
+.button-color {
   color: white !important;
 }
 
 .logo {
   margin-left: auto !important;
 }
+
+.letter-tile {
+  border-style: solid;
+  border-radius: 2px;
+  height: 65px;
+  width: 65px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  font-size: 50px;
+} 
+
+.correct {
+  background-color: #538d4f;
+  color: white;
+}
+
+.present {
+  background-color: #b59f3b;
+  color: white;
+}
+
+.absent {
+  background-color: #3a3a3c;
+  color: white;
+}
+
+.example {
+  padding-left: 12px;
+}
+
