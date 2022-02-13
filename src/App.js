@@ -1,17 +1,20 @@
 import { Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react"
 import Navbar from "./Navbar";
 import Favorites from "./Favorites"
 import LetterContainer from "./LetterContainer";
-import { useEffect, useState } from "react"
+import Keyboard from "./Keyboard";
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
+  const [isFavorited, setIsFavorited] = useState(false)
   const [unfilteredWord, setUnfilteredWord] = useState([])
+  const [favoriteList, setFavoriteList] = useState([])
   const [word, setWord] = useState("")
-  const [syllable, setSyllable] = useState("")
   const [pronunciation, setPronunciation] = useState("")
   const [english, setEnglish] = useState("")
-  const [shortDef, setShortDef] = useState("")
+  const [def, setDef] = useState("")
   const bgColor = isDarkMode ? "black" : "white"
   const textColor = isDarkMode ? "white" : "black"
   const checked = isDarkMode ? true : false
@@ -39,24 +42,38 @@ function App() {
     .then(data => {
       console.log(data)
       setWord(unfilteredWord)
-      setSyllable(data[0].hwi.hw)
       setPronunciation(data[0].hwi.prs[0].mw)
       setEnglish(data[0].fl)
-      setShortDef(data[0].shortdef[0])
+      setDef(data[0].shortdef[0])
     })
   }, [unfilteredWord])
-
-  console.log(word, syllable, pronunciation, english, shortDef)
 
   return (
     <div>
       <Switch>
         <Route exact path="/">
-          <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} bgColor={bgColor} textColor={textColor} checked={checked} />
-          <LetterContainer textColor={textColor} bgColor={bgColor} />
+          <Navbar
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+            bgColor={bgColor}
+            textColor={textColor}
+            checked={checked}
+          />
+          <LetterContainer
+            textColor={textColor}
+            bgColor={bgColor}
+            word={word}
+            pronunciation={pronunciation}
+            english={english}
+            def={def}
+            isFavorited={isFavorited}
+            setIsFavorited={setIsFavorited}
+            setFavoriteList={setFavoriteList}
+          />
+          <Keyboard />
         </Route>
         <Route exact path="/favorites">
-          <Favorites bgColor={bgColor} textColor={textColor} />
+          <Favorites bgColor={bgColor} textColor={textColor} favoriteList={favoriteList}/>
         </Route>
       </Switch>
     </div>

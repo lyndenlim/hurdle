@@ -20,6 +20,7 @@ body {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
+  transform: translate(0%, 80%)
 }
 
 .correct {
@@ -59,3 +60,17 @@ body {
   margin: 2rem auto;
 }
 
+.dictionary-entry {
+  text-align: center;
+  transform: translate(-5%, 60%)
+}
+
+.length-buttons {
+  text-align: center;
+  transform: translate(0%, 300%);
+}
+
+.favorite-container {
+  display: flex;
+  justify-content: center;
+}

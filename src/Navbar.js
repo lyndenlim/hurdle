@@ -1,6 +1,6 @@
 import * as Mui from '@mui/material'
 import * as BS from 'react-bootstrap'
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
@@ -63,9 +63,7 @@ const IOSSwitch = styled((props) => (
 function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
     const [openSettings, setOpenSettings] = useState(false)
     const [openInfo, setOpenInfo] = useState(false)
-    const [isColorblind, setIsColorblind] = useState(false)
     
-
     function handleOpenSettings() {
         setOpenSettings(openSettings => !openSettings)
     }
@@ -80,10 +78,6 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
 
     function handleCloseInfo() {
         setOpenInfo(openInfo => !openInfo)
-    }
-
-    function handleColorblindMode() {
-        setIsColorblind(isColorblind => !isColorblind)
     }
 
     function handleDarkMode() {
@@ -148,7 +142,7 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                     {/* Handles routing to favorites */}
                     <NavLink to="/favorites" exact>
                         <Mui.Button style={{ color: textColor }}>
-                            <BookmarkBorderIcon />
+                            <BookmarkIcon />
                         </Mui.Button>
                     </NavLink>
                     <Mui.Button style={{ color: textColor }} onClick={handleOpenSettings}>
@@ -169,8 +163,6 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                         </BS.Modal.Header>
                         <BS.Modal.Body >
                             <p>{isDarkMode ? "Dark Mode" : "Light Mode"}<IOSSwitch sx={{ m: 1 }} checked={checked} onClick={handleDarkMode} /></p>
-                            {/* Add functionality? */}
-                            <p>Colorblind Mode <IOSSwitch sx={{ m: 1 }} onClick={handleColorblindMode} /></p>
                             <p><BS.Button size="small" variant="danger">Reset Favorites</BS.Button></p>
                         </BS.Modal.Body>
                     </BS.Modal>

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
+import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 
-function LetterContainer({ textColor, bgColor, randomWord }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     let userGuess = []
@@ -19,13 +20,13 @@ function LetterContainer({ textColor, bgColor, randomWord }) {
                     let row = new Array(5)
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
                         if (key[letterIndex] === "R") {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }                        
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }
                         } else if (key[letterIndex] === "E") {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "present" }                        
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "present" }
                         } else {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }                        
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
                         }
-                        
+
                     }
                     return previous.concat([row])
                 })
@@ -58,10 +59,33 @@ function LetterContainer({ textColor, bgColor, randomWord }) {
         grid.push(blankRow)
     }
     return (
-        <div className="letter-container">
-            <br></br>
-            <br></br>
-            {grid.map((letters, index) => <Letters key={index} letters={letters} textColor={textColor} bgColor={bgColor} />)}
+        <div className="container">
+            <div className="row align-items-start">
+                <div className="col dictionary-entry">
+                    <DictionaryEntry
+                        textColor={textColor}
+                        word={word}
+                        pronunciation={pronunciation}
+                        english={english}
+                        def={def}
+                        isFavorited={isFavorited}
+                        setIsFavorited={setIsFavorited}
+                        setFavoriteList={setFavoriteList}
+                    />
+                </div>
+                <div className="col letter-container">
+                    {grid.map((letters, index) => {
+                        return (<Letters key={index}
+                            letters={letters}
+                            textColor={textColor}
+                            bgColor={bgColor}
+                        />)
+                    })}
+                </div>
+                <div className="col length-buttons">
+                    <div><h1>BUTTONS</h1></div>
+                </div>
+            </div>
         </div>
     )
 }
