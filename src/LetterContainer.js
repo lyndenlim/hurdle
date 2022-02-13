@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
+import LengthButtons from "./LengthButtons"
 
 function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList, keyboard }) {
     const [key, setKey] = useState("")
@@ -18,9 +19,9 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     // On enter key, move to following row and reset key state
                     let row = new Array(5)
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
-                        if (key[letterIndex] === "R") {
+                        if (key[letterIndex] === word[letterIndex].toUpperCase()) {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }
-                        } else if (key[letterIndex] === "E") {
+                        } else if (word.toUpperCase().includes(key[letterIndex])) {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "present" }
                         } else {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
@@ -75,8 +76,8 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         />)
                     })}
                 </div>
-                <div className="col length-buttons">
-                    <div><h1>BUTTONS</h1></div>
+                <div className="col length-container">
+                    <LengthButtons textColor={textColor} />
                 </div>
             </div>
         </div>

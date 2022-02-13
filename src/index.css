@@ -20,27 +20,31 @@ body {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  transform: translate(0%, 70%)
+  transform: translate(0%, 70%);
 }
 
 .correct {
-  background-color: #538d4f;
+  background-color: #538d4f !important;
   border: solid #538d4f;
+  color: white
 }
 
 .present {
-  background-color: #b59f3b;
+  background-color: #b59f3b !important;
   border: solid #b59f3b;
+  color: white
 }
 
 .absent {
-  background-color: #8e8e88;
-  border: solid #8e8e88;
+  background-color: #3a3a3c !important;
+  border: solid #3a3a3c;
+  color: white
 }
 
 .empty {
   background-color: black;
   border: solid black;
+  color:white
 }
 
 .example {
@@ -67,9 +71,13 @@ body {
   transform: translate(-3%, 60%);
 }
 
-.length-buttons {
+.length-container {
   text-align: center;
-  transform: translate(0%, 300%);
+  transform: translate(0%, 200%);
+}
+
+.length-buttons {
+  padding: 5px;
 }
 
 .favorite-container {
@@ -89,6 +97,7 @@ body {
   transform: translate(0%, 30%);
   font-weight: bold;
   border-radius: 8px;
+  box-shadow: 5px 5px grey;
 }
   
 .key-list {
