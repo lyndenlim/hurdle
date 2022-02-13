@@ -3,7 +3,7 @@ function Letters({ letters, textColor, bgColor }) {
         <div className="guess">
             {letters.map((letter, index) => {
                 return (
-                    <div key={index} className={`letter-tile ${letter.result}`} style={{backgroundColor: bgColor}}>
+                    <div key={index} className={`letter-tile ${letter.result}`} style={{backgroundColor: bgColor, borderColor: "grey"}}>
                         <span style={{color: textColor}}>{letter.value}</span>
                     </div>
                 )

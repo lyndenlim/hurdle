@@ -13,14 +13,14 @@ body {
 
 .letter-tile {
   display: inline-block;
-  border: 2px solid grey !important;
+  border: 2px solid ;
   margin: 2px;
   width: 65px;
   height: 65px;
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  transform: translate(0%, 80%)
+  transform: translate(0%, 70%)
 }
 
 .correct {
@@ -45,6 +45,7 @@ body {
 
 .example {
   padding-left: 12px;
+  transform: translate(0%, -65%);
 }
 
 .home-button {
@@ -62,7 +63,8 @@ body {
 
 .dictionary-entry {
   text-align: center;
-  transform: translate(-5%, 60%)
+  /* position: fixed; */
+  transform: translate(-3%, 60%);
 }
 
 .length-buttons {
@@ -73,4 +75,25 @@ body {
 .favorite-container {
   display: flex;
   justify-content: center;
+}
+
+.key-item {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  background-color: whitesmoke;
+  font: bold;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  transform: translate(0%, 30%);
+  font-weight: bold;
+  border-radius: 8px;
+}
+  
+.key-list {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 50%;
 }

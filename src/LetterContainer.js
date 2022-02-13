@@ -2,10 +2,9 @@ import { useState, useEffect } from "react"
 import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList, keyboard }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
-    let userGuess = []
 
     useEffect(() => {
         // Handles key up events on whole document
@@ -26,7 +25,6 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         } else {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
                         }
-
                     }
                     return previous.concat([row])
                 })
@@ -35,12 +33,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
         }
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
-    }, [key]);
-
-    // Stores separated guess into array
-    // if (guess.length === 5) {
-    //     userGuess = guess.split("")
-    // }
+    }, [key, keyboard]);
 
     // Creates grid for letters
     let grid = [...guess]

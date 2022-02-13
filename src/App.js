@@ -11,6 +11,7 @@ function App() {
   const [isFavorited, setIsFavorited] = useState(false)
   const [unfilteredWord, setUnfilteredWord] = useState([])
   const [favoriteList, setFavoriteList] = useState([])
+  const [keyboard, setKeyboard] = useState([])
   const [word, setWord] = useState("")
   const [pronunciation, setPronunciation] = useState("")
   const [english, setEnglish] = useState("")
@@ -36,17 +37,19 @@ function App() {
 
   // Second dictionary API used as validation, makes sure the is contained in Merriam Websters
   useEffect(() => {
-    console.log(unfilteredWord)
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setWord(unfilteredWord)
-      setPronunciation(data[0].hwi.prs[0].mw)
-      setEnglish(data[0].fl)
-      setDef(data[0].shortdef[0])
-    })
+      .then(res => res.json())
+      .then(data => {
+        setWord(unfilteredWord)
+        setPronunciation(data[0].hwi.prs[0].mw)
+        setEnglish(data[0].fl)
+        setDef(data[0].shortdef[0])
+      })
   }, [unfilteredWord])
+
+  function handleKeyboard(letter) {
+    setKeyboard(letter)
+  }
 
   return (
     <div>
@@ -69,11 +72,12 @@ function App() {
             isFavorited={isFavorited}
             setIsFavorited={setIsFavorited}
             setFavoriteList={setFavoriteList}
+            keyboard={keyboard}
           />
-          <Keyboard />
+          <Keyboard handleKeyboard={handleKeyboard} />
         </Route>
         <Route exact path="/favorites">
-          <Favorites bgColor={bgColor} textColor={textColor} favoriteList={favoriteList}/>
+          <Favorites bgColor={bgColor} textColor={textColor} favoriteList={favoriteList} />
         </Route>
       </Switch>
     </div>

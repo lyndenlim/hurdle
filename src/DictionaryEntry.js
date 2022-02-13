@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList }) {
     const showFavorited = isFavorited ? <BookmarkIcon /> : <BookmarkBorderIcon />
 
+    // Stores word in favorites page
     function handleClick() {
         if (!isFavorited) {
             setFavoriteList([word, pronunciation, english, def])
