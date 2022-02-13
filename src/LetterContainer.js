@@ -1,71 +1,66 @@
 import { useState, useEffect } from "react"
+import Letters from "./Letters"
 
-function LetterContainer({ textColor }) {
+function LetterContainer({ textColor, bgColor }) {
     const [key, setKey] = useState("")
+    const [guess, setGuess] = useState([])
+    let userGuess = []
 
     useEffect(() => {
-        const keyUp = (e) => {
+        // Handles key up events on whole document
+        function keyUp(e) {
             if (e.keyCode >= 65 && e.keyCode <= 90) {
                 setKey(previous => `${previous}${e.key}`.toUpperCase().slice(0, 5))
             } else if (e.keyCode === 8) {
                 setKey(previous => previous.slice(0, previous.length - 1))
             } else if (e.keyCode === 13 && key.length === 5) {
+                setGuess(previous => {
+                    let row = new Array(5)
+
+                    for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
+                        row[letterIndex] = { value: key.charAt(letterIndex), result: "empty" }
+                    }
+
+                    return previous.concat([row])
+                })
                 setKey("")
             }
         }
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
-    }, []);
+    }, [key]);
 
-    console.log(key.length)
+    // Stores separated guess into array
+    // if (guess.length === 5) {
+    //     userGuess = guess.split("")
+    // }
+
+    // Creates grid for letters
+
+    let grid = [...guess]
+    let currentRow = new Array(5)
+    for (let letterIndex = 0; letterIndex < currentRow.length; letterIndex++) {
+        currentRow[letterIndex] = { value: key.charAt(letterIndex), result: "empty" }
+    }
+    if (grid.length < 6) {
+        grid.push(currentRow)
+    }
+
+
+    for (let i = grid.length; i < 6; i++) {
+        let blankRow = new Array(5)
+
+        for (let j = 0; j < blankRow.length; j++) {
+            blankRow[j] = { value: null, result: "empty" }
+        }
+            grid.push(blankRow)
+    }
 
     return (
-        <div className="container">
+        <div className="letter-container">
             <br></br>
             <br></br>
-            <br></br>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}>{key.slice(0, 1)}</div>
-                <div className="letter-tile" style={{ color: textColor }}>{key.slice(1, 2)}</div>
-                <div className="letter-tile" style={{ color: textColor }}>{key.slice(2, 3)}</div>
-                <div className="letter-tile" style={{ color: textColor }}>{key.slice(3, 4)}</div>
-                <div className="letter-tile" style={{ color: textColor }}>{key.slice(4, 5)}</div>
-            </div>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-            </div>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-            </div>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-            </div>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-            </div>
-            <div className="row">
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-                <div className="letter-tile" style={{ color: textColor }}></div>
-            </div>
+            {grid.map((letters, index) => <Letters key={index} letters={letters} textColor={textColor} bgColor={bgColor} />)}
         </div>
     )
 }

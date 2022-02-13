@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} bgColor={bgColor} textColor={textColor} checked={checked}/>
-          <LetterContainer textColor={textColor}/>
+          <LetterContainer textColor={textColor} bgColor={bgColor}/>
         </Route>
         <Route exact path="/favorites">
           <Favorites bgColor={bgColor} textColor={textColor}/>

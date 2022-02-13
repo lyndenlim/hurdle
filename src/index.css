@@ -12,17 +12,15 @@ body {
 }
 
 .letter-tile {
-  border: 3px solid grey;
-  height: 65px;
-  width: 65px;
+  display: inline-block;
+  border: 2px solid grey !important;
   margin: 2px;
+  width: 65px;
+  height: 65px;
+  text-align: center;
+  font-size: 40px;
   font-weight: bold;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  font-size: 35px;
-  color: white;
-} 
+}
 
 .correct {
   background-color: #538d4f;
@@ -52,8 +50,12 @@ body {
   color: white
 }
 
-.container {
-  max-width: max-content;
-  margin: 1rem auto;
- 
+.guess {
+  display: flex;
 }
+
+.letter-container {
+  max-width: max-content;
+  margin: 2rem auto;
+}
+
