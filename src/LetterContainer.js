@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Letters from "./Letters"
 
-function LetterContainer({ textColor, bgColor }) {
+function LetterContainer({ textColor, bgColor, randomWord }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     let userGuess = []
@@ -15,12 +15,18 @@ function LetterContainer({ textColor, bgColor }) {
                 setKey(previous => previous.slice(0, previous.length - 1))
             } else if (e.keyCode === 13 && key.length === 5) {
                 setGuess(previous => {
+                    // On enter key, move to following row and reset key state
                     let row = new Array(5)
-
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
-                        row[letterIndex] = { value: key.charAt(letterIndex), result: "empty" }
+                        if (key[letterIndex] === "R") {
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }                        
+                        } else if (key[letterIndex] === "E") {
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "present" }                        
+                        } else {
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }                        
+                        }
+                        
                     }
-
                     return previous.concat([row])
                 })
                 setKey("")
@@ -36,7 +42,6 @@ function LetterContainer({ textColor, bgColor }) {
     // }
 
     // Creates grid for letters
-
     let grid = [...guess]
     let currentRow = new Array(5)
     for (let letterIndex = 0; letterIndex < currentRow.length; letterIndex++) {
@@ -45,17 +50,13 @@ function LetterContainer({ textColor, bgColor }) {
     if (grid.length < 6) {
         grid.push(currentRow)
     }
-
-
     for (let i = grid.length; i < 6; i++) {
         let blankRow = new Array(5)
-
         for (let j = 0; j < blankRow.length; j++) {
             blankRow[j] = { value: null, result: "empty" }
         }
-            grid.push(blankRow)
+        grid.push(blankRow)
     }
-
     return (
         <div className="letter-container">
             <br></br>
