@@ -31,7 +31,7 @@ function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavor
         <div className="dictionary-entry" style={{ color: textColor }}>
             <h1>
                 {word.toUpperCase()}
-                <Button onClick={handleClick} disabled={isFavorited} style={{ color: textColor }}>
+                <Button onClick={handleClick} style={{ color: textColor }}>
                     {showFavorited}
                 </Button>
             </h1>

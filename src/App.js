@@ -40,14 +40,12 @@ function App() {
       .then(res => res.json())
       .then(data => setUnfilteredWord(data.word))
   }, [letterLength, word])
-  console.log(word)
 
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         if (data[0].hwi !== undefined) {
           setShouldFetch(false)
           setWord(unfilteredWord)
@@ -102,6 +100,8 @@ function App() {
         </Route>
         <Route exact path="/six">
           <SixLetters
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
             textColor={textColor}
             bgColor={bgColor}
             word={word}
@@ -116,10 +116,13 @@ function App() {
             setLetterLength={setLetterLength}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
+            checked={checked}
           />
         </Route>
         <Route exact path="/seven">
           <SevenLetters
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
             textColor={textColor}
             bgColor={bgColor}
             word={word}
@@ -134,10 +137,13 @@ function App() {
             setLetterLength={setLetterLength}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
+            checked={checked}
           />
         </Route>
         <Route exact path="/eight">
           <EightLetters
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
             textColor={textColor}
             bgColor={bgColor}
             word={word}
@@ -152,6 +158,7 @@ function App() {
             setLetterLength={setLetterLength}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
+            checked={checked}
           />
         </Route>
       </Switch>

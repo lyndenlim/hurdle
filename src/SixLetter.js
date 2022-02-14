@@ -5,7 +5,7 @@ import Letters from "./Letters";
 import DictionaryEntry from "./DictionaryEntry";
 import LengthButtons from "./LengthButtons";
 
-function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch }) {
+function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -70,6 +70,8 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
                 bgColor={bgColor}
                 textColor={textColor}
                 checked={checked}
+                isDarkMode={isDarkMode}
+                setIsDarkMode={setIsDarkMode}
             />
             <div className="container">
                 <div className="row align-items-start">
