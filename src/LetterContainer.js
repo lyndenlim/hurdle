@@ -3,7 +3,7 @@ import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 import LengthButtons from "./LengthButtons"
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, setShouldFetch }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -15,7 +15,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                 setKey(previous => `${previous}${e.key}`.toUpperCase().slice(0, 5))
             } else if (e.keyCode === 8) {
                 setKey(previous => previous.slice(0, previous.length - 1))
-            // On enter key, move to following row and reset key state
+                // On enter key, move to following row and reset key state
             } else if (e.keyCode === 13 && key.length === 5) {
                 setCounter(counter => counter + 1)
                 setGuess(previous => {
@@ -32,10 +32,11 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     }
                     return previous.concat([row])
                 })
-                // if counter hits 6 or guess === word, can you gameState instead of counter
+                console.log(guess)
+                // if counter hits 6 or guess === word
                 if (counter === 6) {
                     setShowDictionary(true)
-                    setGameState(true)
+                    // setGameState(true)
                 }
                 setKey("")
             }
@@ -85,7 +86,12 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     })}
                 </div>
                 <div className="col length-container">
-                    <LengthButtons textColor={textColor} setLetterLength={setLetterLength} />
+                    <LengthButtons
+                        textColor={textColor}
+                        setLetterLength={setLetterLength}
+                        setShouldFetch={setShouldFetch}
+                        setCounter={setCounter}
+                    />
                 </div>
             </div>
         </div>

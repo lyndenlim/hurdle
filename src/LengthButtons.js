@@ -1,22 +1,30 @@
 import Button from '@mui/material/Button'
 import { NavLink } from "react-router-dom"
 
-function LengthButtons({ textColor, setLetterLength }) {
+function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter }) {
 
     function handle5() {
         setLetterLength(5)
+        setShouldFetch(true)
+        setCounter(1)
     }
 
     function handle6() {
         setLetterLength(6)
+        setShouldFetch(true)
+        setCounter(1)
     }
 
     function handle7() {
         setLetterLength(7)
+        setShouldFetch(true)
+        setCounter(1)
     }
 
     function handle8() {
         setLetterLength(8)
+        setShouldFetch(true)
+        setCounter(1)
     }
 
     return (

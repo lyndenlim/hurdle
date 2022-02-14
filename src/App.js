@@ -14,6 +14,7 @@ function App() {
   const [unfilteredWord, setUnfilteredWord] = useState([])
   const [keyboard, setKeyboard] = useState([])
   const [gameState, setGameState] = useState(false)
+  const [shouldFetch, setShouldFetch] = useState(true)
   const [counter, setCounter] = useState(1)
   const [letterLength, setLetterLength] = useState(5)
   const [word, setWord] = useState("")
@@ -26,6 +27,7 @@ function App() {
 
   // First dictionary API that returns random 5-letter word
   useEffect(() => {
+    if (!shouldFetch) return
     fetch(`https://wordsapiv1.p.rapidapi.com/words/?random=true&letters=${letterLength}`,
       {
         method: "GET",
@@ -37,22 +39,26 @@ function App() {
     )
       .then(res => res.json())
       .then(data => setUnfilteredWord(data.word))
-  }, [letterLength])
+  }, [letterLength, word])
+  console.log(word)
 
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        if (data[0].hwi.prs !== undefined) {
+        console.log(data)
+        if (data[0].hwi !== undefined) {
+          setShouldFetch(false)
           setWord(unfilteredWord)
-          setPronunciation(data[0].hwi.prs[0].mw)
+          {data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("")}
           setEnglish(data[0].fl)
           setDef(data[0].shortdef[0])
         } else {
-          console.log("bad word")
+          setWord(unfilteredWord)
         }
       })
+      
   }, [unfilteredWord])
 
   function handleKeyboard(letter) {
@@ -84,6 +90,7 @@ function App() {
             setCounter={setCounter}
             setLetterLength={setLetterLength}
             setGameState={setGameState}
+            setShouldFetch={setShouldFetch}
           />
           <Keyboard handleKeyboard={handleKeyboard} />
         </Route>
@@ -108,6 +115,7 @@ function App() {
             setCounter={setCounter}
             setLetterLength={setLetterLength}
             setGameState={setGameState}
+            setShouldFetch={setShouldFetch}
           />
         </Route>
         <Route exact path="/seven">
@@ -125,6 +133,7 @@ function App() {
             setCounter={setCounter}
             setLetterLength={setLetterLength}
             setGameState={setGameState}
+            setShouldFetch={setShouldFetch}
           />
         </Route>
         <Route exact path="/eight">
@@ -142,6 +151,7 @@ function App() {
             setCounter={setCounter}
             setLetterLength={setLetterLength}
             setGameState={setGameState}
+            setShouldFetch={setShouldFetch}
           />
         </Route>
       </Switch>
