@@ -1,6 +1,11 @@
 {
-    "word": [],
-    "pronuncation": [],
-    "english": [],
-    "definition": []
+  "entries": [
+    {
+      "word": "input",
+      "pronunciation": "ˈin-ˌpu̇t",
+      "english": "noun",
+      "definition": "something that is put in: such as",
+      "id": 1
+    }
+  ]
 }

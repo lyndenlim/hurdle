@@ -2,13 +2,26 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import Button from '@mui/material/Button'
 
-function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList }) {
+function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavorited, setIsFavorited }) {
     const showFavorited = isFavorited ? <BookmarkIcon /> : <BookmarkBorderIcon />
 
     // Stores word in favorites page
     function handleClick() {
         if (!isFavorited) {
-            setFavoriteList([word, pronunciation, english, def])
+            fetch("http://localhost:3000/entries", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    word: word,
+                    pronunciation: pronunciation,
+                    english: english,
+                    definition: def
+                })
+            })
+                .then(res => res.json())
+                .then(data => data)
         }
         setIsFavorited(isFavorited => !isFavorited)
     }

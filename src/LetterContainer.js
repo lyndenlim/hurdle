@@ -3,9 +3,10 @@ import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 import LengthButtons from "./LengthButtons"
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, setFavoriteList, keyboard }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
+    const [showDictionary, setShowDictionary] = useState(false)
 
     useEffect(() => {
         // Handles key up events on whole document
@@ -15,9 +16,11 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
             } else if (e.keyCode === 8) {
                 setKey(previous => previous.slice(0, previous.length - 1))
             } else if (e.keyCode === 13 && key.length === 5) {
+                setCounter(counter => counter + 1)
                 setGuess(previous => {
                     // On enter key, move to following row and reset key state
                     let row = new Array(5)
+                    // Set classes for each tile after comparing to random word
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
                         if (key[letterIndex] === word[letterIndex].toUpperCase()) {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }
@@ -29,12 +32,18 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     }
                     return previous.concat([row])
                 })
+                // if counter hits 6 or guess === word 
+                if (counter === 6) {
+                    setShowDictionary(true)
+                }
                 setKey("")
             }
         }
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key, keyboard]);
+
+
 
     // Creates grid for letters
     let grid = [...guess]
@@ -56,7 +65,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
         <div className="container">
             <div className="row align-items-start">
                 <div className="col dictionary-entry">
-                    <DictionaryEntry
+                    {showDictionary ? <DictionaryEntry
                         textColor={textColor}
                         word={word}
                         pronunciation={pronunciation}
@@ -64,8 +73,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         def={def}
                         isFavorited={isFavorited}
                         setIsFavorited={setIsFavorited}
-                        setFavoriteList={setFavoriteList}
-                    />
+                    /> : null}
                 </div>
                 <div className="col letter-container">
                     {grid.map((letters, index) => {

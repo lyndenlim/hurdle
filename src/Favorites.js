@@ -1,16 +1,40 @@
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 import * as Mui from "@mui/material"
+import { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom"
 import DictionaryEntry from './DictionaryEntry';
 
-function Favorites({ bgColor, textColor, favoriteList }) {
+function Favorites({ bgColor, textColor }) {
+    const [entries, setEntries] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:3000/entries")
+            .then(res => res.json())
+            .then(data => setEntries(data))
+    }, [])
+
+    const favoriteElements = entries.map(entry => {
+        return (
+            <p>
+                <DictionaryEntry
+                    textColor={textColor}
+                    word={entry.word}
+                    pronunciation={entry.pronunciation}
+                    english={entry.english}
+                    def={entry.definition}
+                    isFavorited={true}
+                />
+            </p>
+        )
+    })
+
     return (
         <div>
             <Mui.AppBar className="favorite-bar" style={{ backgroundColor: bgColor }}>
                 <style>{`body {background-color: ${bgColor}`}</style>
                 <Mui.Toolbar>
                     <Mui.Typography variant="h4" style={{ color: textColor }}>
-                        Favorited Words
+                        Bookmarks
                     </Mui.Typography>
                     <div className='buttons'>
                         <NavLink to="/" exact>
@@ -23,13 +47,7 @@ function Favorites({ bgColor, textColor, favoriteList }) {
             </Mui.AppBar>
             <div className='favorite-container'>
                 <div className="row">
-                    <DictionaryEntry textColor={textColor}
-                        word={favoriteList[0]}
-                        pronunciation={favoriteList[1]}
-                        english={favoriteList[2]}
-                        def={favoriteList[3]}
-                        isFavorited={true}
-                    />
+                    {favoriteElements}
                 </div>
             </div>
         </div>

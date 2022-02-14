@@ -95,6 +95,7 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                     <Mui.Button style={{ color: textColor }} onClick={handleOpenInfo} >
                         <HelpOutlineIcon />
                     </Mui.Button>
+                    {/* Content for info modal */}
                     <BS.Modal
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
@@ -148,6 +149,7 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                     <Mui.Button style={{ color: textColor }} onClick={handleOpenSettings}>
                         <SettingsIcon />
                     </Mui.Button>
+                    {/* Content for settings modal */}
                     <BS.Modal
                         size="sm"
                         aria-labelledby="contained-modal-title-vcenter"
