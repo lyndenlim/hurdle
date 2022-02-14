@@ -21,6 +21,7 @@ function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavor
                 })
             })
                 .then(res => res.json())
+                // Check for dups
                 .then(data => data)
         }
         setIsFavorited(isFavorited => !isFavorited)
@@ -30,7 +31,7 @@ function DictionaryEntry({ textColor, word, pronunciation, english, def, isFavor
         <div className="dictionary-entry" style={{ color: textColor }}>
             <h1>
                 {word.toUpperCase()}
-                <Button onClick={handleClick} style={{ color: textColor }}>
+                <Button onClick={handleClick} disabled={isFavorited} style={{ color: textColor }}>
                     {showFavorited}
                 </Button>
             </h1>

@@ -15,7 +15,7 @@ function Favorites({ bgColor, textColor }) {
 
     const favoriteElements = entries.map(entry => {
         return (
-            <p>
+            <div className="favorite-item" key={entry.word}>
                 <DictionaryEntry
                     textColor={textColor}
                     word={entry.word}
@@ -24,7 +24,7 @@ function Favorites({ bgColor, textColor }) {
                     def={entry.definition}
                     isFavorited={true}
                 />
-            </p>
+            </div>
         )
     })
 

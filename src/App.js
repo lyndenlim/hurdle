@@ -4,13 +4,18 @@ import Navbar from "./Navbar";
 import Favorites from "./Favorites"
 import LetterContainer from "./LetterContainer";
 import Keyboard from "./Keyboard";
+import SixLetters from "./SixLetter"
+import SevenLetters from "./SevenLetters";
+import EightLetters from "./EightLetter";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
   const [isFavorited, setIsFavorited] = useState(false)
   const [unfilteredWord, setUnfilteredWord] = useState([])
   const [keyboard, setKeyboard] = useState([])
+  const [gameState, setGameState] = useState(false)
   const [counter, setCounter] = useState(1)
+  const [letterLength, setLetterLength] = useState(5)
   const [word, setWord] = useState("")
   const [pronunciation, setPronunciation] = useState("")
   const [english, setEnglish] = useState("")
@@ -21,7 +26,7 @@ function App() {
 
   // First dictionary API that returns random 5-letter word
   useEffect(() => {
-    fetch("https://wordsapiv1.p.rapidapi.com/words/?random=true&letters=5",
+    fetch(`https://wordsapiv1.p.rapidapi.com/words/?random=true&letters=${letterLength}`,
       {
         method: "GET",
         headers: {
@@ -32,17 +37,21 @@ function App() {
     )
       .then(res => res.json())
       .then(data => setUnfilteredWord(data.word))
-  }, [])
+  }, [letterLength])
 
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        setWord(unfilteredWord)
-        setPronunciation(data[0].hwi.prs[0].mw)
-        setEnglish(data[0].fl)
-        setDef(data[0].shortdef[0])
+        if (data[0].hwi.prs !== undefined) {
+          setWord(unfilteredWord)
+          setPronunciation(data[0].hwi.prs[0].mw)
+          setEnglish(data[0].fl)
+          setDef(data[0].shortdef[0])
+        } else {
+          console.log("bad word")
+        }
       })
   }, [unfilteredWord])
 
@@ -73,6 +82,8 @@ function App() {
             keyboard={keyboard}
             counter={counter}
             setCounter={setCounter}
+            setLetterLength={setLetterLength}
+            setGameState={setGameState}
           />
           <Keyboard handleKeyboard={handleKeyboard} />
         </Route>
@@ -80,6 +91,57 @@ function App() {
           <Favorites
             bgColor={bgColor}
             textColor={textColor}
+          />
+        </Route>
+        <Route exact path="/six">
+          <SixLetters
+            textColor={textColor}
+            bgColor={bgColor}
+            word={word}
+            pronunciation={pronunciation}
+            english={english}
+            def={def}
+            isFavorited={isFavorited}
+            setIsFavorited={setIsFavorited}
+            keyboard={keyboard}
+            counter={counter}
+            setCounter={setCounter}
+            setLetterLength={setLetterLength}
+            setGameState={setGameState}
+          />
+        </Route>
+        <Route exact path="/seven">
+          <SevenLetters
+            textColor={textColor}
+            bgColor={bgColor}
+            word={word}
+            pronunciation={pronunciation}
+            english={english}
+            def={def}
+            isFavorited={isFavorited}
+            setIsFavorited={setIsFavorited}
+            keyboard={keyboard}
+            counter={counter}
+            setCounter={setCounter}
+            setLetterLength={setLetterLength}
+            setGameState={setGameState}
+          />
+        </Route>
+        <Route exact path="/eight">
+          <EightLetters
+            textColor={textColor}
+            bgColor={bgColor}
+            word={word}
+            pronunciation={pronunciation}
+            english={english}
+            def={def}
+            isFavorited={isFavorited}
+            setIsFavorited={setIsFavorited}
+            keyboard={keyboard}
+            counter={counter}
+            setCounter={setCounter}
+            setLetterLength={setLetterLength}
+            setGameState={setGameState}
           />
         </Route>
       </Switch>

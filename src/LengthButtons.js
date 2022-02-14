@@ -1,22 +1,48 @@
 import Button from '@mui/material/Button'
+import { NavLink } from "react-router-dom"
 
-function LengthButtons({ textColor }) {
+function LengthButtons({ textColor, setLetterLength }) {
+
+    function handle5() {
+        setLetterLength(5)
+    }
+
+    function handle6() {
+        setLetterLength(6)
+    }
+
+    function handle7() {
+        setLetterLength(7)
+    }
+
+    function handle8() {
+        setLetterLength(8)
+    }
+
     return (
         <div>
             <div className="col length-buttons">
                 <span style={{ paddingRight: "10px" }}>
-                    <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }}>5 Letters</Button>
+                    <NavLink to="/" exact style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }} onClick={handle5}>5 Letters</Button>
+                    </NavLink>
                 </span>
                 <span>
-                    <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }}>6 Letters</Button>
+                    <NavLink to="/six" exact style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }} onClick={handle6}>6 Letters</Button>
+                    </NavLink>
                 </span>
             </div>
             <div className="col length-buttons">
                 <span style={{ paddingRight: "10px" }}>
-                    <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }}>7 Letters</Button>
+                    <NavLink to="/seven" exact style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }} onClick={handle7}>7 Letters</Button>
+                    </NavLink>
                 </span>
                 <span>
-                    <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }}>8 Letters</Button>
+                    <NavLink to="/eight" exact style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined" size="large" style={{ color: textColor, borderColor: textColor }} onClick={handle8}>8 Letters</Button>
+                    </NavLink>
                 </span>
             </div>
         </div>

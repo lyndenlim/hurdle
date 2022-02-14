@@ -26,19 +26,19 @@ body {
 .correct {
   background-color: #538d4f !important;
   border: solid #538d4f;
-  color: white
+  color: white;
 }
 
 .present {
   background-color: #b59f3b !important;
   border: solid #b59f3b;
-  color: white
+  color: white;
 }
 
 .absent {
   background-color: #3a3a3c !important;
   border: solid #3a3a3c;
-  color: white
+  color: white;
 }
 
 .empty {
@@ -49,7 +49,7 @@ body {
 
 .example {
   padding-left: 12px;
-  transform: translate(0%, -65%);
+  transform: translate(0%, -50%);
 }
 
 .home-button {
@@ -67,8 +67,12 @@ body {
 
 .dictionary-entry {
   text-align: center;
-  /* position: fixed; */
-  transform: translate(-3%, 50%);
+  transform: translate(0%, 50%);
+  animation: fadeIn linear 3s;
+  -webkit-animation: fadeIn linear 3s;
+  -moz-animation: fadeIn linear 3s;
+  -o-animation: fadeIn linear 3s;
+  -ms-animation: fadeIn linear 3s;
 }
 
 .length-container {
@@ -96,6 +100,7 @@ body {
   align-items: center;
   transform: translate(0%, 15%);
   font-weight: bold;
+  font-size: 22px;
   border-radius: 8px;
   box-shadow: 5px 5px grey;
 }
@@ -105,4 +110,34 @@ body {
   margin: auto;
   justify-content: center;
   width: 50%;
+}
+
+.favorite-item {
+  padding-bottom: 20px;
+  transform: translate(0%, 0%);
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
