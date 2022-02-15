@@ -30,21 +30,25 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
                         }
                     }
-                    return previous.concat([row])
+                    let result = previous.concat([row])
+                    checkWin(result)
+                    return result
                 })
-                console.log(guess)
-                // if counter hits 6 or guess === word
-                if (counter === 6) {
-                    setShowDictionary(true)
-                    // setGameState(true)
-                }
-                setKey("")
             }
         }
+
+        function checkWin(result) {
+            let userGuess = result.map(letter => letter.map(item => item.result))
+            if (counter === 6 || userGuess.map(guess => guess.every(item => item === "correct"))) {
+                setShowDictionary(true)
+                setKey("")
+                // reset game state, disable the ability to type anymore
+            }
+        }
+
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
-
 
     // Creates grid for letters
     let grid = [...guess]
@@ -55,6 +59,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
     if (grid.length < 6) {
         grid.push(currentRow)
     }
+
     for (let i = grid.length; i < 6; i++) {
         let blankRow = new Array(5)
         for (let j = 0; j < blankRow.length; j++) {
@@ -91,6 +96,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         setLetterLength={setLetterLength}
                         setShouldFetch={setShouldFetch}
                         setCounter={setCounter}
+                        setIsFavorited={setIsFavorited}
                     />
                 </div>
             </div>

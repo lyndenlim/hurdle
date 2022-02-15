@@ -38,7 +38,7 @@ function App() {
       }
     )
       .then(res => res.json())
-      .then(data => setUnfilteredWord(data.word))
+      .then(data => setUnfilteredWord("resew"))
   }, [letterLength, word])
 
   // Second dictionary API, slightly more accurate information
