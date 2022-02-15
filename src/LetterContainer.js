@@ -2,8 +2,9 @@ import { useState, useEffect } from "react"
 import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 import LengthButtons from "./LengthButtons"
+import WinnerModal from "./WinnerModal"
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, setShouldFetch }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, setShouldFetch, showModal, setShowModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -34,15 +35,16 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     checkWin(result)
                     return result
                 })
+                setKey("")
             }
         }
 
         function checkWin(result) {
             let userGuess = result.map(letter => letter.map(item => item.result))
-            if (counter === 6 || userGuess.map(guess => guess.every(item => item === "correct"))) {
+            let resultArray = userGuess.map(guess => guess.every(item => item === "correct" ))
+            if (counter === 6 || resultArray.includes(true)) {
                 setShowDictionary(true)
-                setKey("")
-                // reset game state, disable the ability to type anymore
+                setShowModal(true)
             }
         }
 
@@ -69,6 +71,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
     }
     return (
         <div className="container">
+            {showModal ? <WinnerModal /> : null}
             <div className="row align-items-start">
                 <div className="col dictionary-entry">
                     {showDictionary ? <DictionaryEntry

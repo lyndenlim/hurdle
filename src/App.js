@@ -15,6 +15,7 @@ function App() {
   const [keyboard, setKeyboard] = useState([])
   const [gameState, setGameState] = useState(false)
   const [shouldFetch, setShouldFetch] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [counter, setCounter] = useState(1)
   const [letterLength, setLetterLength] = useState(5)
   const [word, setWord] = useState("")
@@ -38,8 +39,10 @@ function App() {
       }
     )
       .then(res => res.json())
-      .then(data => setUnfilteredWord("resew"))
+      .then(data => setUnfilteredWord(data.word))
   }, [letterLength, word])
+
+  console.log(unfilteredWord)
 
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
@@ -49,14 +52,14 @@ function App() {
         if (data[0].hwi !== undefined) {
           setShouldFetch(false)
           setWord(unfilteredWord)
-          {data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("")}
+          { data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("") }
           setEnglish(data[0].fl)
           setDef(data[0].shortdef[0])
         } else {
           setWord(unfilteredWord)
         }
       })
-      
+
   }, [unfilteredWord])
 
   function handleKeyboard(letter) {
@@ -89,13 +92,17 @@ function App() {
             setLetterLength={setLetterLength}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
           <Keyboard handleKeyboard={handleKeyboard} />
+          
         </Route>
         <Route exact path="/favorites">
           <Favorites
             bgColor={bgColor}
             textColor={textColor}
+            
           />
         </Route>
         <Route exact path="/six">
@@ -117,6 +124,7 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
+            showModal={showModal}
           />
         </Route>
         <Route exact path="/seven">
@@ -138,6 +146,7 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
+            showModal={showModal}
           />
         </Route>
         <Route exact path="/eight">
@@ -159,6 +168,7 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
+            showModal={showModal}
           />
         </Route>
       </Switch>

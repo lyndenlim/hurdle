@@ -4,9 +4,9 @@ import Keyboard from './Keyboard';
 import Letters from "./Letters";
 import DictionaryEntry from "./DictionaryEntry";
 import LengthButtons from "./LengthButtons";
+import WinnerModal from "./WinnerModal";
 
-
-function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode }) {
+function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode, showModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -33,16 +33,24 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
                         }
                     }
-                    return previous.concat([row])
+                    let result = previous.concat([row])
+                    checkWin(result)
+                    return result
                 })
-                // if counter hits 6 or guess === word, can you gameState instead of counter
-                if (counter === 6) {
-                    setShowDictionary(true)
-                    setGameState(true)
-                }
                 setKey("")
             }
         }
+
+        function checkWin(result) {
+            let userGuess = result.map(letter => letter.map(item => item.result))
+            if (counter === 6 || userGuess.map(guess => guess.every(item => item === "correct"))) {
+                alert("winner")
+                setShowDictionary(true)
+
+                // reset game state, disable the ability to type anymore
+            }
+        }
+
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
@@ -75,6 +83,7 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                 setIsDarkMode={setIsDarkMode}
             />
             <div className="container">
+                {showModal ? <WinnerModal /> : null}
                 <div className="row align-items-start">
                     <div className="col dictionary-entry">
                         {showDictionary ? <DictionaryEntry
@@ -97,7 +106,7 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                         })}
                     </div>
                     <div className="col length-container">
-                        <LengthButtons textColor={textColor} setLetterLength={setLetterLength} setShouldFetch={setShouldFetch} setCounter={setCounter}/>
+                        <LengthButtons textColor={textColor} setLetterLength={setLetterLength} setShouldFetch={setShouldFetch} setCounter={setCounter} />
                     </div>
                 </div>
             </div>
