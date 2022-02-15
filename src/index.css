@@ -11,6 +11,12 @@ body {
   margin-left: auto !important;
 }
 
+.logo { 
+  margin: auto;
+  justify-content: center;
+  height: 65px;
+}
+
 .letter-tile {
   display: inline-block;
   border: 2px solid ;

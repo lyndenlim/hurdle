@@ -1,7 +1,10 @@
-function KeyItem({ handleKeyboard, value }) {
+function KeyItem({ value, renderer }) {
     return (
-        <button className="key-item" tabIndex="-1"
-            onClick={() => handleKeyboard(value)}>
+        <button className="key-item"
+            onClick={() => {
+                renderer(value)
+            }}
+        >
             {value}
         </button>
     )

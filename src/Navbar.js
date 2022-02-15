@@ -6,7 +6,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-
+import logob from './logob.png'
+import logow from './logow.png'
+import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 
 const IOSSwitch = styled((props) => (
     <Mui.Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -85,14 +87,13 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
     }
 
     return (
-        <Mui.AppBar className="appbar" style={{ backgroundColor: bgColor }} >
+        <Mui.AppBar className="appbar" style={{ backgroundColor: bgColor }} elevation={0} >
             <style>{`body {background-color : ${bgColor}}`}</style>
             <Mui.Toolbar >
-                <Mui.Typography variant="h4" className="logo" style={{ color: textColor }}>
-                    Hurdle
-                </Mui.Typography>
-                <div className="buttons">
-                    <Mui.Button style={{ color: textColor }} onClick={handleOpenInfo} >
+            <Mui.Button style={{ color: textColor }}>
+                <FlagOutlinedIcon/>
+            </Mui.Button>
+            <Mui.Button style={{ color: textColor }} onClick={handleOpenInfo} >
                         <HelpOutlineIcon />
                     </Mui.Button>
                     {/* Content for info modal */}
@@ -140,13 +141,15 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                             <p>The letter <strong>V</strong> is not in the word in any spot.</p>
                         </BS.Modal.Body>
                     </BS.Modal>
+                <img src={isDarkMode ? logow : logob} alt="logo" className="logo"></img>
+                {/* <div className="buttons"> */}
                     {/* Handles routing to favorites */}
                     <NavLink to="/favorites" exact>
-                        <Mui.Button style={{ color: textColor }}>
+                        <Mui.Button style={{ color: textColor }} className="buttons">
                             <BookmarkIcon />
                         </Mui.Button>
                     </NavLink>
-                    <Mui.Button style={{ color: textColor }} onClick={handleOpenSettings}>
+                    <Mui.Button style={{ color: textColor }} onClick={handleOpenSettings} className="button">
                         <SettingsIcon />
                     </Mui.Button>
                     {/* Content for settings modal */}
@@ -168,7 +171,7 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                             <p><BS.Button size="small" variant="danger">Reset Favorites</BS.Button></p>
                         </BS.Modal.Body>
                     </BS.Modal>
-                </div>
+                {/* </div> */}
             </Mui.Toolbar>
         </Mui.AppBar>
     )

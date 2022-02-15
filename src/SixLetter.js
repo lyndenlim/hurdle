@@ -1,12 +1,28 @@
 import { useState, useEffect } from "react"
 import Navbar from './Navbar';
-import Keyboard from './Keyboard';
 import Letters from "./Letters";
 import DictionaryEntry from "./DictionaryEntry";
 import LengthButtons from "./LengthButtons";
 import WinnerModal from "./WinnerModal";
+import KeyList from "./KeyList";
+import BackspaceIcon from '@mui/icons-material/Backspace';
 
-function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode, showModal }) {
+function Keyboard(props) {
+    const keys = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', <BackspaceIcon />]
+    ]
+    return (
+        <div className="keyboard">
+            {keys.map(keyList => {
+                return <KeyList key={keyList} keyList={keyList} renderer={props.func} />
+            })}
+        </div>
+    )
+}
+
+function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode, showModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -40,7 +56,7 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
                 setKey("")
             }
         }
-
+        // Game concludes on try 6 or if the user guesses the word correctly
         function checkWin(result) {
             let userGuess = result.map(letter => letter.map(item => item.result))
             if (counter === 6 || userGuess.map(guess => guess.every(item => item === "correct"))) {
@@ -53,7 +69,14 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
-
+    // Adds keyboard letter to key state
+    const concatWord = (val) => {
+        if (val === "BACKSPACE"){
+            setKey(previous => previous.slice(0, previous.length - 1))
+        } else {
+            setKey(key + val)
+        }
+    }
 
     // Creates grid for letters
     let grid = [...guess]
@@ -109,7 +132,7 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
                     </div>
                 </div>
             </div>
-            <Keyboard handleKeyboard={handleKeyboard} />
+            <Keyboard func={concatWord} />
         </div>
     )
 }

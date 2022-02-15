@@ -3,8 +3,25 @@ import DictionaryEntry from "./DictionaryEntry"
 import Letters from "./Letters"
 import LengthButtons from "./LengthButtons"
 import WinnerModal from "./WinnerModal"
+import KeyList from "./KeyList"
+import BackspaceIcon from '@mui/icons-material/Backspace';
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, keyboard, counter, setCounter, setLetterLength, setGameState, setShouldFetch, showModal, setShowModal }) {
+function Keyboard(props) {
+    const keys = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', <BackspaceIcon />]
+    ]
+    return (
+        <div className="keyboard">
+            {keys.map(keyList => {
+                return <KeyList key={keyList} keyList={keyList} renderer={props.func} />
+            })}
+        </div>
+    )
+}
+
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, setGameState, setShouldFetch, showModal, setShowModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -38,19 +55,26 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                 setKey("")
             }
         }
-
+        // Game concludes on try 6 or if the user guesses the word correctly
         function checkWin(result) {
             let userGuess = result.map(letter => letter.map(item => item.result))
-            let resultArray = userGuess.map(guess => guess.every(item => item === "correct" ))
+            let resultArray = userGuess.map(guess => guess.every(item => item === "correct"))
             if (counter === 6 || resultArray.includes(true)) {
                 setShowDictionary(true)
                 setShowModal(true)
             }
         }
-
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
+    // Adds keyboard letter to key state
+    const concatWord = (val) => {
+        if (val === "BACKSPACE"){
+            setKey(previous => previous.slice(0, previous.length - 1))
+        } else {
+            setKey(key + val)
+        }
+    }
 
     // Creates grid for letters
     let grid = [...guess]
@@ -102,6 +126,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         setIsFavorited={setIsFavorited}
                     />
                 </div>
+                <Keyboard func={concatWord} />
             </div>
         </div>
     )

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import Navbar from "./Navbar";
 import Favorites from "./Favorites"
 import LetterContainer from "./LetterContainer";
-import Keyboard from "./Keyboard";
 import SixLetters from "./SixLetter"
 import SevenLetters from "./SevenLetters";
 import EightLetters from "./EightLetter";
@@ -12,7 +11,6 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
   const [isFavorited, setIsFavorited] = useState(false)
   const [unfilteredWord, setUnfilteredWord] = useState([])
-  const [keyboard, setKeyboard] = useState([])
   const [gameState, setGameState] = useState(false)
   const [shouldFetch, setShouldFetch] = useState(true)
   const [showModal, setShowModal] = useState(false)
@@ -62,8 +60,8 @@ function App() {
 
   }, [unfilteredWord])
 
-  function handleKeyboard(letter) {
-    setKeyboard(letter)
+  const rendererFunction = (func, val) => {
+    func(val)
   }
 
   return (
@@ -86,7 +84,6 @@ function App() {
             def={def}
             isFavorited={isFavorited}
             setIsFavorited={setIsFavorited}
-            keyboard={keyboard}
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
@@ -94,15 +91,14 @@ function App() {
             setShouldFetch={setShouldFetch}
             showModal={showModal}
             setShowModal={setShowModal}
+            rendererFunction={rendererFunction}
           />
-          <Keyboard handleKeyboard={handleKeyboard} />
-          
         </Route>
         <Route exact path="/favorites">
           <Favorites
             bgColor={bgColor}
             textColor={textColor}
-            
+
           />
         </Route>
         <Route exact path="/six">
@@ -117,7 +113,6 @@ function App() {
             def={def}
             isFavorited={isFavorited}
             setIsFavorited={setIsFavorited}
-            keyboard={keyboard}
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
@@ -125,6 +120,7 @@ function App() {
             setShouldFetch={setShouldFetch}
             checked={checked}
             showModal={showModal}
+            rendererFunction={rendererFunction}
           />
         </Route>
         <Route exact path="/seven">
@@ -139,7 +135,6 @@ function App() {
             def={def}
             isFavorited={isFavorited}
             setIsFavorited={setIsFavorited}
-            keyboard={keyboard}
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
@@ -147,6 +142,7 @@ function App() {
             setShouldFetch={setShouldFetch}
             checked={checked}
             showModal={showModal}
+            rendererFunction={rendererFunction}
           />
         </Route>
         <Route exact path="/eight">
@@ -161,7 +157,6 @@ function App() {
             def={def}
             isFavorited={isFavorited}
             setIsFavorited={setIsFavorited}
-            keyboard={keyboard}
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
@@ -169,6 +164,7 @@ function App() {
             setShouldFetch={setShouldFetch}
             checked={checked}
             showModal={showModal}
+            rendererFunction={rendererFunction}
           />
         </Route>
       </Switch>
