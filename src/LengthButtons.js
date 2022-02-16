@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button'
 import { NavLink } from "react-router-dom"
 
-function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter, setIsFavorited, setGameState }) {
+function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter, setIsFavorited, setGameState, setGuess, setShowDictionary }) {
 
     function handle5() {
         setLetterLength(5)
@@ -9,6 +9,9 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
+        setGuess("")
+        setShowDictionary(false)
+
     }
 
     function handle6() {
@@ -17,6 +20,8 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
+        setGuess("")
+        setShowDictionary(false)
     }
 
     function handle7() {
@@ -25,6 +30,8 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
+        setGuess("")
+        setShowDictionary(false)
     }
 
     function handle8() {
@@ -33,6 +40,8 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
+        setGuess("")
+        setShowDictionary(false)
     }
 
     return (

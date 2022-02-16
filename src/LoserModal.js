@@ -2,7 +2,7 @@ import * as BS from 'react-bootstrap'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function LoserModal({ setShowLoseModal, setGameState }) {
+function LoserModal({ setShowLoseModal, setGameState, word }) {
     const [openLoseModal, setLoseWinModal] = useState(true)
     const history = useHistory()
 
@@ -30,7 +30,8 @@ function LoserModal({ setShowLoseModal, setGameState }) {
             <BS.Modal.Header closeButton></BS.Modal.Header>
             <BS.Modal.Body style={{ textAlign: "center" }}>
                 <h2>Better luck next time...</h2>
-                <BS.Button onClick={handlePlayAgain}>PLAY AGAIN</BS.Button>
+                <p style={{margin: '10px'}}>The word was <strong>{word.toUpperCase()}</strong></p>
+                <BS.Button onClick={handlePlayAgain} style={{margin: '10px'}}>PLAY AGAIN</BS.Button>
             </BS.Modal.Body>
         </BS.Modal>
     )

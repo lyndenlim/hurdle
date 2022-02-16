@@ -26,7 +26,6 @@ body {
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  transform: translate(0%, 60%);
 }
 
 .correct {
@@ -69,6 +68,7 @@ body {
 .letter-container {
   max-width: max-content;
   margin: 2rem auto;
+  transform: translate(0%, 9%);
 }
 
 .dictionary-entry {
@@ -128,41 +128,56 @@ body {
   0% {
       transform: rotateX(0deg);
   }
+  25% {
+    transform: rotateX(45deg);
+  }
   50% {
       transform: rotateX(90deg);
+  }
+  75%{
+    transform: rotateX(135);
   }
   100% {
       transform: rotateX(0deg);
   }
 }
+
 .flip0 {
   animation: 0.5s linear flipping;
 }
+
 .flip1 {
   animation: 0.5s linear flipping;
   animation-delay: .5s
 }
+
 .flip2 {
   animation: 0.5s linear flipping;
   animation-delay: .75s
 }
+
 .flip3 {
   animation: 0.5s linear flipping;
   animation-delay: 1s
 }
+
 .flip4 {
   animation: 0.5s linear flipping;
   animation-delay: 1.25s
 }
+
 .flip5 {
   animation: 0.5s linear flipping;
   animation-delay: 1.5s
 }
+
 .flip6 {
   animation: 0.5s linear flipping;
   animation-delay: 1.75s
 }
+
 .flip7 {
   animation: 0.5s linear flipping;
   animation-delay: 2s
 }
+

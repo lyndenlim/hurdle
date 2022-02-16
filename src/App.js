@@ -39,7 +39,7 @@ function App() {
     )
       .then(res => res.json())
       .then(data => setUnfilteredWord(data.word))
-  }, [letterLength, word])
+  }, [letterLength, word, gameState])
 
   console.log(unfilteredWord)  
 

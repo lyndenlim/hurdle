@@ -108,7 +108,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
     return (
         <div className="container">
             {showWinModal ? <WinnerModal counter={counter} setShowWinModal={setShowWinModal} setGameState={setGameState} /> : null}
-            {showLoseModal ? <LoserModal setShowLoseModal={setShowLoseModal} setGameState={setGameState} /> : null}
+            {showLoseModal ? <LoserModal setShowLoseModal={setShowLoseModal} setGameState={setGameState} word={word} /> : null}
             <div className="row align-items-start">
                 <div className="col dictionary-entry">
                     {showDictionary ? <DictionaryEntry
@@ -138,6 +138,8 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         setCounter={setCounter}
                         setIsFavorited={setIsFavorited}
                         setGameState={setGameState}
+                        setGuess={setGuess}
+                        setShowDictionary={setShowDictionary}
                     />
                 </div>
                 <Keyboard func={concatWord} gameState={gameState} />

@@ -117,7 +117,7 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
             />
             <div className="container">
                 {showWinModal ? <WinnerModal counter={counter} setShowWinModal={setShowWinModal} setGameState={setGameState} /> : null}
-                {showLoseModal ? <LoserModal setShowLoseModal={setShowLoseModal} setGameState={setGameState} /> : null}
+                {showLoseModal ? <LoserModal setShowLoseModal={setShowLoseModal} setGameState={setGameState} word={word} /> : null}
                 <div className="row align-items-start">
                     <div className="col dictionary-entry">
                         {showDictionary ? <DictionaryEntry
@@ -140,7 +140,15 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                         })}
                     </div>
                     <div className="col length-container">
-                        <LengthButtons textColor={textColor} setLetterLength={setLetterLength} setShouldFetch={setShouldFetch} setCounter={setCounter} />
+                        <LengthButtons textColor={textColor}
+                            setLetterLength={setLetterLength}
+                            setShouldFetch={setShouldFetch}
+                            setCounter={setCounter}
+                            setIsFavorited={setIsFavorited}
+                            setGameState={setGameState}
+                            setGuess={setGuess}
+                            setShowDictionary={setShowDictionary}
+                        />
                     </div>
                 </div>
             </div>
