@@ -1,10 +1,13 @@
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
-import * as Mui from "@mui/material"
+import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
+import * as Mui from "@mui/material";
 import { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import FavoriteEntry from './FavoriteEntry';
+import logob from './logob.png';
+import logow from './logow.png';
 
-function Favorites({ bgColor, textColor }) {
+function Favorites({ bgColor, textColor, isDarkMode }) {
     const [entries, setEntries] = useState([])
 
     // Fetch entries from database
@@ -39,19 +42,18 @@ function Favorites({ bgColor, textColor }) {
 
     return (
         <div>
-            <Mui.AppBar className="favorite-bar" style={{ backgroundColor: bgColor }}>
+            <Mui.AppBar className="appbar" style={{ backgroundColor: bgColor }} elevation={0}>
                 <style>{`body {background-color: ${bgColor}`}</style>
                 <Mui.Toolbar>
-                    <Mui.Typography variant="h4" style={{ color: textColor }}>
-                        Bookmarks
-                    </Mui.Typography>
-                    <div className='buttons'>
-                        <NavLink to="/" exact>
-                            <Mui.Button style={{ color: textColor }}>
-                                <HouseOutlinedIcon />
-                            </Mui.Button>
-                        </NavLink>
-                    </div>
+                    <Mui.Button style={{ color: "transparent" }} disabled={true}>
+                        <FlagOutlinedIcon />
+                    </Mui.Button>
+                    <img src={isDarkMode ? logow : logob} alt="logo" className="logo"></img>
+                    <NavLink to="/" exact>
+                        <Mui.Button style={{ color: textColor }}>
+                            <HouseOutlinedIcon />
+                        </Mui.Button>
+                    </NavLink>
                 </Mui.Toolbar>
             </Mui.AppBar>
             <div className='favorite-container'>
@@ -60,8 +62,6 @@ function Favorites({ bgColor, textColor }) {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

@@ -13,7 +13,8 @@ function App() {
   const [unfilteredWord, setUnfilteredWord] = useState([])
   const [gameState, setGameState] = useState(false)
   const [shouldFetch, setShouldFetch] = useState(true)
-  const [showModal, setShowModal] = useState(false)
+  const [showWinModal, setShowWinModal] = useState(false)
+  const [showLoseModal, setShowLoseModal] = useState(false)
   const [counter, setCounter] = useState(1)
   const [letterLength, setLetterLength] = useState(5)
   const [word, setWord] = useState("")
@@ -40,14 +41,14 @@ function App() {
       .then(data => setUnfilteredWord(data.word))
   }, [letterLength, word])
 
-  console.log(unfilteredWord)
+  console.log(unfilteredWord)  
 
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        if (data[0].hwi !== undefined) {
+        if (data[0].hwi !== undefined && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1) {
           setShouldFetch(false)
           setWord(unfilteredWord)
           { data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("") }
@@ -89,8 +90,10 @@ function App() {
             setLetterLength={setLetterLength}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
-            showModal={showModal}
-            setShowModal={setShowModal}
+            showWinModal={showWinModal}
+            setShowWinModal={setShowWinModal}
+            showLoseModal={showLoseModal}
+            setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
           />
         </Route>
@@ -98,7 +101,7 @@ function App() {
           <Favorites
             bgColor={bgColor}
             textColor={textColor}
-
+            isDarkMode={isDarkMode}
           />
         </Route>
         <Route exact path="/six">
@@ -119,7 +122,10 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
-            showModal={showModal}
+            showWinModal={showWinModal}
+            setShowWinModal={setShowWinModal}
+            showLoseModal={showLoseModal}
+            setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
           />
         </Route>
@@ -141,7 +147,10 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
-            showModal={showModal}
+            showWinModal={showWinModal}
+            setShowWinModal={setShowWinModal}
+            showLoseModal={showLoseModal}
+            setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
           />
         </Route>
@@ -163,7 +172,10 @@ function App() {
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
-            showModal={showModal}
+            showWinModal={showWinModal}
+            setShowWinModal={setShowWinModal}
+            showLoseModal={showLoseModal}
+            setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
           />
         </Route>

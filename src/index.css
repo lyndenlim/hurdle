@@ -8,7 +8,7 @@ body {
 }
 
 .buttons {
-  margin-left: auto !important;
+  /* margin-left: auto !important; */
 }
 
 .logo { 
@@ -74,11 +74,7 @@ body {
 .dictionary-entry {
   text-align: center;
   transform: translate(0%, 50%);
-  animation: fadeIn linear 3s;
-  -webkit-animation: fadeIn linear 3s;
-  -moz-animation: fadeIn linear 3s;
-  -o-animation: fadeIn linear 3s;
-  -ms-animation: fadeIn linear 3s;
+  animation: fadeIn linear 2s;
 }
 
 .length-container {

@@ -4,6 +4,7 @@ import Letters from "./Letters";
 import DictionaryEntry from "./DictionaryEntry";
 import LengthButtons from "./LengthButtons";
 import WinnerModal from "./WinnerModal";
+import LoserModal from "./LoserModal";
 import KeyList from "./KeyList";
 import BackspaceIcon from '@mui/icons-material/Backspace';
 
@@ -22,7 +23,7 @@ function Keyboard(props) {
     )
 }
 
-function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, setGameState, checked, handleKeyboard, setShouldFetch, isDarkMode, setIsDarkMode, showModal }) {
+function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, setGameState, checked, setShouldFetch, isDarkMode, setIsDarkMode, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -59,19 +60,21 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
         // Game concludes on try 6 or if the user guesses the word correctly
         function checkWin(result) {
             let userGuess = result.map(letter => letter.map(item => item.result))
-            if (counter === 6 || userGuess.map(guess => guess.every(item => item === "correct"))) {
+            let resultArray = userGuess.map(guess => guess.every(item => item === "correct"))
+            if (resultArray.includes(true)) {
                 setShowDictionary(true)
-
-                // reset game state, disable the ability to type anymore
+                setShowWinModal(true)
+            } else if (counter === 6){
+                setShowDictionary(true)
+                setShowLoseModal(true)
             }
         }
-
         window.addEventListener("keyup", keyUp)
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
     // Adds keyboard letter to key state
     const concatWord = (val) => {
-        if (val === "BACKSPACE"){
+        if (typeof(val.$$typeof) === "symbol") {
             setKey(previous => previous.slice(0, previous.length - 1))
         } else {
             setKey(key + val)
@@ -105,7 +108,8 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
                 setIsDarkMode={setIsDarkMode}
             />
             <div className="container">
-                {showModal ? <WinnerModal /> : null}
+                {showWinModal ? <WinnerModal /> : null}
+                {showLoseModal ? <LoserModal /> : null}
                 <div className="row align-items-start">
                     <div className="col dictionary-entry">
                         {showDictionary ? <DictionaryEntry

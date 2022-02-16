@@ -1,39 +1,25 @@
 {
   "entries": [
     {
-      "word": "fleawort",
-      "pronunciation": "ˈflē-ˌwərt",
-      "english": "noun",
-      "definition": "any of three Old World plantains (especially Plantago psyllium) whose seeds are sometimes used as a mild laxative",
-      "id": 9
-    },
-    {
-      "word": "poser",
-      "pronunciation": "ˈpō-zər",
-      "english": "noun",
-      "definition": "a puzzling or baffling question",
-      "id": 11
-    },
-    {
-      "word": "resew",
-      "pronunciation": "(ˌ)rē-ˈsō",
+      "word": "spill",
+      "pronunciation": "ˈspil",
       "english": "verb",
-      "definition": "to sew (something) again or anew : to unite (something) again with stitches",
-      "id": 12
+      "definition": "to cause or allow especially accidentally or unintentionally to fall, flow, or run out so as to be lost or wasted",
+      "id": 1
     },
     {
-      "word": "herat",
-      "pronunciation": "he-ˈrät",
-      "english": "geographical name",
-      "definition": "city in northwestern Afghanistan on the Harīrūd River population 396,000",
-      "id": 13
+      "word": "landlord",
+      "pronunciation": "ˈland-ˌlȯrd",
+      "english": "noun",
+      "definition": "the owner of property (such as land, houses, or apartments) that is leased or rented to another",
+      "id": 2
     },
     {
-      "word": "gamey",
-      "pronunciation": "ˈgā-mē",
-      "english": "adjective",
-      "definition": "brave, plucky —used especially of animals",
-      "id": 14
+      "word": "gulosity",
+      "pronunciation": "g(y)ü-ˈlä-sə-tē",
+      "english": "noun",
+      "definition": "excessive appetite : voracity",
+      "id": 3
     }
   ]
 }

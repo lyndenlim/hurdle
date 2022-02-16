@@ -12,7 +12,7 @@ function FavoriteEntry({ textColor, word, pronunciation, english, def, id, handl
     }
 
     return (
-        <div className="dictionary-entry" style={{ color: textColor }}>
+        <div className="dictionary-entry"  style={{ color: textColor, border: `5px solid ${textColor}`, borderRadius: '25px', padding: '25px 0px' }}>
             <h1>
                 {word.toUpperCase()}
                 <Button onClick={handleDelete} style={{ color: textColor }}>
