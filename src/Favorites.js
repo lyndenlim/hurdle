@@ -2,13 +2,14 @@ import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import * as Mui from "@mui/material";
 import { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import FavoriteEntry from './FavoriteEntry';
 import logob from './logob.png';
 import logow from './logow.png';
 
 function Favorites({ bgColor, textColor, isDarkMode }) {
     const [entries, setEntries] = useState([])
+    const history = useHistory()
 
     // Fetch entries from database
     useEffect(() => {
@@ -40,6 +41,11 @@ function Favorites({ bgColor, textColor, isDarkMode }) {
         )
     })
 
+    function handleClick() {
+        history.push('/')
+        history.go(0)
+    }
+
     return (
         <div>
             <Mui.AppBar className="appbar" style={{ backgroundColor: bgColor }} elevation={0}>
@@ -49,11 +55,9 @@ function Favorites({ bgColor, textColor, isDarkMode }) {
                         <FlagOutlinedIcon />
                     </Mui.Button>
                     <img src={isDarkMode ? logow : logob} alt="logo" className="logo"></img>
-                    <NavLink to="/" exact>
-                        <Mui.Button style={{ color: textColor }}>
-                            <HouseOutlinedIcon />
-                        </Mui.Button>
-                    </NavLink>
+                    <Mui.Button style={{ color: textColor }} onClick={handleClick}>
+                        <HouseOutlinedIcon />
+                    </Mui.Button>
                 </Mui.Toolbar>
             </Mui.AppBar>
             <div className='favorite-container'>

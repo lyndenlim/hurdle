@@ -13,13 +13,14 @@ function LoserModal({ setShowLoseModal, setGameState }) {
 
     function handlePlayAgain() {
         history.push("/")
+        history.go(0)
         setShowLoseModal(false)
         setGameState(false)
     }
 
     return (
         <BS.Modal
-            size="md"
+            size="sm"
             aria-labelledby="contained-modal-title-vcenter"
             centered
             show={openLoseModal}

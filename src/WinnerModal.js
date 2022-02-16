@@ -12,7 +12,8 @@ function WinnerModal({ counter, setShowWinModal, setGameState }) {
     }
 
     function handlePlayAgain() {
-        history.push("/")
+        history.push('/')
+        history.go(0)
         setShowWinModal(false)
         setGameState(false)
     }
