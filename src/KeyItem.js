@@ -1,6 +1,7 @@
-function KeyItem({ value, renderer }) {
+function KeyItem({ value, renderer, gameState }) {
     return (
         <button className="key-item"
+            disabled={gameState}
             tabIndex="-1"
             onClick={() => {
                 renderer(value)

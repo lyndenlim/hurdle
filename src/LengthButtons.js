@@ -1,13 +1,14 @@
 import Button from '@mui/material/Button'
 import { NavLink } from "react-router-dom"
 
-function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter, setIsFavorited }) {
+function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter, setIsFavorited, setGameState }) {
 
     function handle5() {
         setLetterLength(5)
         setShouldFetch(true)
         setCounter(1)
         setIsFavorited(false)
+        setGameState(false)
     }
 
     function handle6() {
@@ -15,6 +16,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setShouldFetch(true)
         setCounter(1)
         setIsFavorited(false)
+        setGameState(false)
     }
 
     function handle7() {
@@ -22,6 +24,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setShouldFetch(true)
         setCounter(1)
         setIsFavorited(false)
+        setGameState(false)
     }
 
     function handle8() {
@@ -29,6 +32,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setShouldFetch(true)
         setCounter(1)
         setIsFavorited(false)
+        setGameState(false)
     }
 
     return (

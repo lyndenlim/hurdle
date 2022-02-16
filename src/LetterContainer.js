@@ -16,13 +16,13 @@ function Keyboard(props) {
     return (
         <div className="keyboard">
             {keys.map(keyList => {
-                return <KeyList key={keyList} keyList={keyList} renderer={props.func} />
+                return <KeyList key={keyList} keyList={keyList} renderer={props.func} gameState={props.gameState} />
             })}
         </div>
     )
 }
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, setGameState, setShouldFetch, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, gameState, setGameState, setShouldFetch, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
     const [showDictionary, setShowDictionary] = useState(false)
@@ -63,18 +63,25 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
             if (resultArray.includes(true)) {
                 setShowDictionary(true)
                 setShowWinModal(true)
-            } else if (counter === 6){
+                setGameState(true)
+            } else if (counter === 6 && resultArray.includes(true)) {
+                setShowDictionary(true)
+                setShowWinModal(true)
+                setGameState(true)
+            } else if (counter === 6) {
                 setShowDictionary(true)
                 setShowLoseModal(true)
+                setGameState(true)
             }
-            
         }
-        window.addEventListener("keyup", keyUp)
+        if (gameState === false) {
+            window.addEventListener("keyup", keyUp)
+        }
         return () => window.removeEventListener("keyup", keyUp)
     }, [key]);
     // Adds keyboard letter to key state
     const concatWord = (val) => {
-        if (typeof(val.$$typeof) === "symbol") {
+        if (typeof (val.$$typeof) === "symbol") {
             setKey(previous => previous.slice(0, previous.length - 1))
         } else {
             setKey(key + val)
@@ -100,8 +107,8 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
     }
     return (
         <div className="container">
-            {showWinModal ? <WinnerModal /> : null}
-            {showLoseModal ? <LoserModal /> : null}
+            {showWinModal ? <WinnerModal counter={counter} setShowWinModal={setShowWinModal} setGameState={setGameState} /> : null}
+            {showLoseModal ? <LoserModal setShowLoseModal={setShowLoseModal} setGameState={setGameState} /> : null}
             <div className="row align-items-start">
                 <div className="col dictionary-entry">
                     {showDictionary ? <DictionaryEntry
@@ -130,9 +137,10 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                         setShouldFetch={setShouldFetch}
                         setCounter={setCounter}
                         setIsFavorited={setIsFavorited}
+                        setGameState={setGameState}
                     />
                 </div>
-                <Keyboard func={concatWord} />
+                <Keyboard func={concatWord} gameState={gameState} />
             </div>
         </div>
     )

@@ -88,6 +88,7 @@ function App() {
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
+            gameState={gameState}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             showWinModal={showWinModal}
@@ -119,6 +120,7 @@ function App() {
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
+            gameState={gameState}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
@@ -144,6 +146,7 @@ function App() {
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
+            gameState={gameState}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}
@@ -169,6 +172,7 @@ function App() {
             counter={counter}
             setCounter={setCounter}
             setLetterLength={setLetterLength}
+            gameState={gameState}
             setGameState={setGameState}
             setShouldFetch={setShouldFetch}
             checked={checked}

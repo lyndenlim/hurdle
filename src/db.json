@@ -1,25 +1,25 @@
 {
   "entries": [
     {
-      "word": "spill",
-      "pronunciation": "ˈspil",
-      "english": "verb",
-      "definition": "to cause or allow especially accidentally or unintentionally to fall, flow, or run out so as to be lost or wasted",
-      "id": 1
-    },
-    {
-      "word": "landlord",
-      "pronunciation": "ˈland-ˌlȯrd",
-      "english": "noun",
-      "definition": "the owner of property (such as land, houses, or apartments) that is leased or rented to another",
-      "id": 2
-    },
-    {
       "word": "gulosity",
       "pronunciation": "g(y)ü-ˈlä-sə-tē",
       "english": "noun",
       "definition": "excessive appetite : voracity",
       "id": 3
+    },
+    {
+      "word": "inurn",
+      "pronunciation": "i-ˈnərn",
+      "english": "verb",
+      "definition": "entomb",
+      "id": 4
+    },
+    {
+      "word": "decry",
+      "pronunciation": "di-ˈkrī",
+      "english": "verb",
+      "definition": "to depreciate (something, such as a coin) officially or publicly",
+      "id": 5
     }
   ]
 }

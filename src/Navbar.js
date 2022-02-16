@@ -110,7 +110,7 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                     </BS.Modal.Header>
                     <BS.Modal.Body>
                         <p>Like <strong>WORDLE</strong> but harder... </p>
-                        <p>Guess the word in 6 tries. Hit/click the enter button to submit.</p>
+                        <p>Guess the word in 6 tries. Hit the enter button to submit.</p>
                         <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
                         <hr></hr>
                         <h5>Examples</h5>
