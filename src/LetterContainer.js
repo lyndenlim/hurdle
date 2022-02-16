@@ -16,7 +16,12 @@ function Keyboard(props) {
     return (
         <div className="keyboard">
             {keys.map(keyList => {
-                return <KeyList key={keyList} keyList={keyList} renderer={props.func} gameState={props.gameState} />
+                return <KeyList
+                    key={keyList}
+                    keyList={keyList}
+                    renderer={props.func}
+                    gameState={props.gameState}
+                />
             })}
         </div>
     )
@@ -78,7 +83,7 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
             window.addEventListener("keyup", keyUp)
         }
         return () => window.removeEventListener("keyup", keyUp)
-    }, [key]);
+    }, [key, gameState]);
     // Adds keyboard letter to key state
     const concatWord = (val) => {
         if (typeof (val.$$typeof) === "symbol") {

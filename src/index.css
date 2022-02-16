@@ -40,12 +40,13 @@ body {
   background-color: #696966 !important;
   border: solid #696966;
   color: white;
+  
 }
 
 .empty {
   background-color: black;
   border: solid black;
-  color:white
+  color:white;
 }
 
 .example {
@@ -68,7 +69,7 @@ body {
 
 .dictionary-entry {
   text-align: center;
-  transform: translate(0%, 50%);
+  transform: translate(0%, 25%);
   animation: fadeIn linear 2s;
 }
 
@@ -130,7 +131,7 @@ body {
       transform: rotateX(90deg);
   }
   75%{
-    transform: rotateX(135);
+    transform: rotateX(115);
   }
   100% {
       transform: rotateX(0deg);
@@ -139,40 +140,47 @@ body {
 
 .flip0 {
   animation: 0.5s linear flipping;
+  transition: background-color 1s;
 }
 
 .flip1 {
   animation: 0.5s linear flipping;
-  animation-delay: .5s
+  animation-delay: .5s;
+  transition: background-color 2.5s;
 }
 
 .flip2 {
   animation: 0.5s linear flipping;
-  animation-delay: .75s
+  animation-delay: .75s;
+  transition: background-color 4s;
 }
 
 .flip3 {
   animation: 0.5s linear flipping;
-  animation-delay: 1s
+  animation-delay: 1s;
+  transition: background-color 5s;
 }
 
 .flip4 {
   animation: 0.5s linear flipping;
-  animation-delay: 1.25s
+  animation-delay: 1.25s;
+  transition: background-color 5.3s;
 }
 
 .flip5 {
   animation: 0.5s linear flipping;
-  animation-delay: 1.5s
+  animation-delay: 1.5s;
+  transition: background-color 5.6s;
 }
 
 .flip6 {
   animation: 0.5s linear flipping;
-  animation-delay: 1.75s
+  animation-delay: 1.75s;
+  transition: background-color 5.9s;
 }
 
 .flip7 {
   animation: 0.5s linear flipping;
-  animation-delay: 2s
+  animation-delay: 2s;
+  transition: background-color 6s;
 }
-

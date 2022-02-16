@@ -41,17 +41,15 @@ function App() {
       .then(data => setUnfilteredWord(data.word))
   }, [letterLength, word, gameState])
 
-  console.log(unfilteredWord)  
-
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1) {
+        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1){
           setShouldFetch(false)
           setWord(unfilteredWord)
-          data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("") 
+          data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("")
           setEnglish(data[0].fl)
           setDef(data[0].shortdef[0])
         } else {

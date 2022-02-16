@@ -9,9 +9,8 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
-        setGuess("")
+        setGuess([])
         setShowDictionary(false)
-
     }
 
     function handle6() {
@@ -20,7 +19,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
-        setGuess("")
+        setGuess([])
         setShowDictionary(false)
     }
 
@@ -30,7 +29,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
-        setGuess("")
+        setGuess([])
         setShowDictionary(false)
     }
 
@@ -40,7 +39,7 @@ function LengthButtons({ textColor, setLetterLength, setShouldFetch, setCounter,
         setCounter(1)
         setIsFavorited(false)
         setGameState(false)
-        setGuess("")
+        setGuess([])
         setShowDictionary(false)
     }
 
