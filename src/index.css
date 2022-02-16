@@ -7,10 +7,6 @@ body {
   z-index: 1 !important;
 }
 
-.buttons {
-  /* margin-left: auto !important; */
-}
-
 .logo { 
   margin: auto;
   justify-content: center;
