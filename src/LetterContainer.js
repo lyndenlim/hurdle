@@ -42,11 +42,11 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                     // Set classes for each tile after comparing to random word
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
                         if (key[letterIndex] === word[letterIndex].toUpperCase()) {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "correct" }
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "correct", flip: `flip${letterIndex}` }
                         } else if (word.toUpperCase().includes(key[letterIndex])) {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "present" }
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "present", flip: `flip${letterIndex}` }
                         } else {
-                            row[letterIndex] = { value: key.charAt(letterIndex), result: "absent" }
+                            row[letterIndex] = { value: key.charAt(letterIndex), result: "absent", flip: `flip${letterIndex}` }
                         }
                     }
                     let result = previous.concat([row])
