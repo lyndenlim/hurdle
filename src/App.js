@@ -41,13 +41,13 @@ function App() {
       .then(res => res.json())
       .then(data => setUnfilteredWord(data.word))
   }, [letterLength, word, gameState])
-
+  console.log(unfilteredWord)
   // Second dictionary API, slightly more accurate information
   useEffect(() => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        
+
         // No duplicate letters in random words
         // let wordSplit = unfilteredWord.split('')
         // let letterCount = {}
@@ -59,7 +59,7 @@ function App() {
         //   }
         // })
         // let wordConditional = Object.values(letterCount).every(item => item === 1)
-        
+
         if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1 && (data[0].shortdef[0]).length <= 150) {
           setShouldFetch(false)
           setWord(unfilteredWord)
