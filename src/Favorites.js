@@ -10,7 +10,6 @@ import logow from './logow.png';
 function Favorites({ bgColor, textColor, isDarkMode }) {
     const [entries, setEntries] = useState([])
     const history = useHistory()
-
     // Fetch entries from database
     useEffect(() => {
         fetch("http://localhost:3000/entries")

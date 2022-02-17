@@ -69,7 +69,7 @@ body {
 
 .dictionary-entry {
   text-align: center;
-  transform: translate(0%, 25%);
+  transform: translate(0%, 40%);
   animation: fadeIn linear 2s;
 }
 
@@ -112,7 +112,6 @@ body {
 
 .favorite-item {
   padding-bottom: 20px;
-  transform: translate(0%, 0%);
 }
 
 @keyframes fadeIn {
@@ -131,7 +130,7 @@ body {
       transform: rotateX(90deg);
   }
   75%{
-    transform: rotateX(115);
+    transform: rotateX(135);
   }
   100% {
       transform: rotateX(0deg);
@@ -140,47 +139,48 @@ body {
 
 .flip0 {
   animation: 0.5s linear flipping;
-  transition: background-color 1s;
+  transition-delay: 250ms;
 }
 
 .flip1 {
   animation: 0.5s linear flipping;
   animation-delay: .5s;
-  transition: background-color 2.5s;
+  transition-delay: 750ms;
 }
 
 .flip2 {
   animation: 0.5s linear flipping;
   animation-delay: .75s;
-  transition: background-color 4s;
+  transition-delay: 1000ms;
 }
 
 .flip3 {
   animation: 0.5s linear flipping;
   animation-delay: 1s;
-  transition: background-color 5s;
+  transition-delay: 1250ms;
 }
 
 .flip4 {
   animation: 0.5s linear flipping;
   animation-delay: 1.25s;
-  transition: background-color 5.3s;
+  transition-delay: 1500ms;
+  
 }
 
 .flip5 {
   animation: 0.5s linear flipping;
   animation-delay: 1.5s;
-  transition: background-color 5.6s;
+  transition-delay: 1750ms;
 }
 
 .flip6 {
   animation: 0.5s linear flipping;
   animation-delay: 1.75s;
-  transition: background-color 5.9s;
+  transition-delay: 2000ms;
 }
 
 .flip7 {
   animation: 0.5s linear flipping;
   animation-delay: 2s;
-  transition: background-color 6s;
+  transition-delay: 2250ms;
 }

@@ -114,6 +114,9 @@ function EightLetters({ textColor, bgColor, word, pronunciation, english, def, i
                 checked={checked}
                 isDarkMode={isDarkMode}
                 setIsDarkMode={setIsDarkMode}
+                setGameState={setGameState}
+                setShowLoseModal={setShowLoseModal}
+                setShowDictionary={setShowDictionary}
             />
             <div className="container">
                 {showWinModal ? <WinnerModal counter={counter} setShowWinModal={setShowWinModal} setGameState={setGameState} /> : null}

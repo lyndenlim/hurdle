@@ -61,7 +61,7 @@ const IOSSwitch = styled((props) => (
     },
 }));
 
-function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
+function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked, setShowLoseModal, setGameState, setShowDictionary }) {
     const [openSettings, setOpenSettings] = useState(false)
     const [openInfo, setOpenInfo] = useState(false)
 
@@ -167,8 +167,8 @@ function Navbar({ isDarkMode, setIsDarkMode, bgColor, textColor, checked }) {
                     <BS.Modal.Body >
                         <p>{isDarkMode ? "Dark Mode" : "Light Mode"}<IOSSwitch sx={{ m: 1 }} checked={checked} onClick={handleDarkMode} /></p>
                         <p>Inspired by
-                            <BS.Button style={{margin: "10px"}}>
-                                <a href="https://www.nytimes.com/games/wordle/index.html" style={{color: "white", textDecoration: "none"}}>
+                            <BS.Button style={{ margin: "10px", backgroundColor: "#538d4f", borderColor: "#538d4f" }}>
+                                <a href="https://www.nytimes.com/games/wordle/index.html" style={{ color: "white", textDecoration: "none" }}>
                                     <strong>WORDLE</strong>
                                 </a>
                             </BS.Button>

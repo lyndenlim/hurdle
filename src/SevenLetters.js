@@ -114,6 +114,9 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                 checked={checked}
                 isDarkMode={isDarkMode}
                 setIsDarkMode={setIsDarkMode}
+                setGameState={setGameState}
+                setShowLoseModal={setShowLoseModal}
+                setShowDictionary={setShowDictionary}
             />
             <div className="container">
                 {showWinModal ? <WinnerModal counter={counter} setShowWinModal={setShowWinModal} setGameState={setGameState} /> : null}
@@ -140,7 +143,8 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                         })}
                     </div>
                     <div className="col length-container">
-                        <LengthButtons textColor={textColor}
+                        <LengthButtons
+                            textColor={textColor}
                             setLetterLength={setLetterLength}
                             setShouldFetch={setShouldFetch}
                             setCounter={setCounter}

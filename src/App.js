@@ -15,6 +15,7 @@ function App() {
   const [shouldFetch, setShouldFetch] = useState(true)
   const [showWinModal, setShowWinModal] = useState(false)
   const [showLoseModal, setShowLoseModal] = useState(false)
+  const [showDictionary, setShowDictionary] = useState(false)
   const [counter, setCounter] = useState(1)
   const [letterLength, setLetterLength] = useState(5)
   const [word, setWord] = useState("")
@@ -46,7 +47,20 @@ function App() {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${unfilteredWord}?key=c7d47a35-1538-4a8c-a6a6-5d47170ded58`)
       .then(res => res.json())
       .then(data => {
-        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1){
+        
+        // No duplicate letters in random words
+        // let wordSplit = unfilteredWord.split('')
+        // let letterCount = {}
+        // wordSplit.forEach(letter => {
+        //   if (letterCount[letter]) {
+        //     letterCount[letter] += 1
+        //   } else {
+        //     letterCount[letter] = 1
+        //   }
+        // })
+        // let wordConditional = Object.values(letterCount).every(item => item === 1)
+        
+        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1 && (data[0].shortdef[0]).length <= 150) {
           setShouldFetch(false)
           setWord(unfilteredWord)
           data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("")
@@ -73,6 +87,9 @@ function App() {
             bgColor={bgColor}
             textColor={textColor}
             checked={checked}
+            setShowLoseModal={setShowLoseModal}
+            setGameState={setGameState}
+            setShowDictionary={setShowDictionary}
           />
           <LetterContainer
             textColor={textColor}
@@ -94,6 +111,8 @@ function App() {
             showLoseModal={showLoseModal}
             setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
+            showDictionary={showDictionary}
+            setShowDictionary={setShowDictionary}
           />
         </Route>
         <Route exact path="/favorites">

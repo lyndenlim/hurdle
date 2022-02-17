@@ -27,11 +27,10 @@ function Keyboard(props) {
     )
 }
 
-function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, gameState, setGameState, setShouldFetch, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal }) {
+function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, gameState, setGameState, setShouldFetch, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal, showDictionary, setShowDictionary }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
-    const [showDictionary, setShowDictionary] = useState(false)
-
+    
     useEffect(() => {
         // Handles key up events on whole document
         function keyUp(e) {
