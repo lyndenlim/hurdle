@@ -60,7 +60,7 @@ function App() {
         // })
         // let wordConditional = Object.values(letterCount).every(item => item === 1)
 
-        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1 && (data[0].shortdef[0]).length <= 150) {
+        if (data[0].hwi !== undefined && data[0].fl.indexOf("name") === -1 && unfilteredWord.indexOf(" ") === -1 && unfilteredWord.indexOf("-") === -1 && unfilteredWord.indexOf("'") === -1 && (data[0].shortdef[0]).length <= 150 && data[0].fl !== "abbreviation") {
           setShouldFetch(false)
           setWord(unfilteredWord)
           data[0].hwi.prs ? setPronunciation(data[0].hwi.prs[0].mw) : setPronunciation("")
