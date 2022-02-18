@@ -30,7 +30,7 @@ function Keyboard(props) {
 function LetterContainer({ textColor, bgColor, word, pronunciation, english, def, isFavorited, setIsFavorited, counter, setCounter, setLetterLength, gameState, setGameState, setShouldFetch, showWinModal, setShowWinModal, showLoseModal, setShowLoseModal, showDictionary, setShowDictionary }) {
     const [key, setKey] = useState("")
     const [guess, setGuess] = useState([])
-    
+
     useEffect(() => {
         // Handles key up events on whole document
         function keyUp(e) {
@@ -43,12 +43,32 @@ function LetterContainer({ textColor, bgColor, word, pronunciation, english, def
                 setCounter(counter => counter + 1)
                 setGuess(previous => {
                     let row = new Array(5)
-                    // Set classes for each tile after comparing to random word
+                    
+                    // Counts the occurrances of each letter in solution word
+                    let letterCount = {}
+                    for (let i = 0; i < word.length; i++) {
+                        if (!letterCount[word[i]]) {
+                            letterCount[word[i]] = 0
+                        }
+                        letterCount[word[i]]++
+                    }
+                    // Correct pass, if guess matches position and character of solution word mark as green
                     for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
                         if (key[letterIndex] === word[letterIndex].toUpperCase()) {
+                            letterCount[key[letterIndex]]--
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "correct", flip: `flip${letterIndex}` }
-                        } else if (word.toUpperCase().includes(key[letterIndex])) {
+                        }
+                    }
+                    // Checks if row is defined and has already been processed, if so continue through the loop
+                    for (let letterIndex = 0; letterIndex < row.length; letterIndex++) {
+                        if (row[letterIndex] && row[letterIndex].result === "correct") {
+                            continue
+                        } 
+                        // If character is defined and count is greater than 0, mark as 'in the word' and then decrement the count
+                        // if count is greater than 0 that means there are other letters left somewhere in the word
+                        if (letterCount[key[letterIndex]] && letterCount[key[letterIndex]] > 0) {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "present", flip: `flip${letterIndex}` }
+                            letterCount[key[letterIndex]]--
                         } else {
                             row[letterIndex] = { value: key.charAt(letterIndex), result: "absent", flip: `flip${letterIndex}` }
                         }

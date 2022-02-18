@@ -94,7 +94,7 @@ function App() {
           <LetterContainer
             textColor={textColor}
             bgColor={bgColor}
-            word={word}
+            word={word.toUpperCase()}
             pronunciation={pronunciation}
             english={english}
             def={def}
