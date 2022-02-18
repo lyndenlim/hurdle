@@ -61,6 +61,7 @@ function WinnerModal({ counter, setShowWinModal, setGameState }) {
             centered
             show={openWinModal}
             onHide={handleClose}
+            backdrop={false}
         >
             <BS.Modal.Header closeButton></BS.Modal.Header>
             <BS.Modal.Body style={{ textAlign: "center" }}>

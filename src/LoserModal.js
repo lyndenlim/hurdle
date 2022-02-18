@@ -26,6 +26,7 @@ function LoserModal({ setShowLoseModal, setGameState, word }) {
             show={openLoseModal}
             onHide={handleClose}
             closeButton
+            backdrop={false}
         >
             <BS.Modal.Header closeButton></BS.Modal.Header>
             <BS.Modal.Body style={{ textAlign: "center" }}>
