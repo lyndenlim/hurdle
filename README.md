@@ -1,10 +1,10 @@
 # README
 
-Hosted on GitHub: https://lyndenlim.github.io/hurdle/
+Hosted on Github: https://lyndenlim.github.io/hurdle/
 
 # FEATURES
-- User can select from 4 word lengths
 - Can guess a word and receive feedback based on word submitted
+- User can select from 4 word lengths
 - Unlimited replayability
 - Dictionary entry is displayed upon conclusion of the game
 - Ability to favorite/unfavorite dictionary entries for future reference
