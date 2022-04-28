@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/hurdle/static/css/main.f16a67fa.css",
-    "main.js": "/hurdle/static/js/main.5604c900.js",
+    "main.css": "/hurdle/static/css/main.c90358a1.css",
+    "main.js": "/hurdle/static/js/main.16447414.js",
     "index.html": "/hurdle/index.html",
-    "main.f16a67fa.css.map": "/hurdle/static/css/main.f16a67fa.css.map",
-    "main.5604c900.js.map": "/hurdle/static/js/main.5604c900.js.map"
+    "main.c90358a1.css.map": "/hurdle/static/css/main.c90358a1.css.map",
+    "main.16447414.js.map": "/hurdle/static/js/main.16447414.js.map"
   },
   "entrypoints": [
-    "static/css/main.f16a67fa.css",
-    "static/js/main.5604c900.js"
+    "static/css/main.c90358a1.css",
+    "static/js/main.16447414.js"
   ]
 }
