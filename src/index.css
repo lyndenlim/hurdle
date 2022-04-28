@@ -1,5 +1,5 @@
 body {
-  background-color: black ;
+  background-color: black;
 }
 
 .appbar {
@@ -7,7 +7,7 @@ body {
   z-index: 1 !important;
 }
 
-.logo { 
+.logo {
   margin: auto;
   justify-content: center;
   height: 65px;
@@ -15,7 +15,7 @@ body {
 
 .letter-tile {
   display: inline-block;
-  border: 2px solid ;
+  border: 2px solid;
   margin: 3px;
   width: 65px;
   height: 65px;
@@ -40,13 +40,13 @@ body {
   background-color: #696966 !important;
   border: solid #696966;
   color: white;
-  
+
 }
 
 .empty {
   background-color: black;
   border: solid black;
-  color:white;
+  color: white;
 }
 
 .example {
@@ -75,7 +75,11 @@ body {
 
 .length-container {
   text-align: center;
-  transform: translate(0%, 200%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  /* transform: translate(0%, 200%); */
 }
 
 .length-buttons {
@@ -102,7 +106,7 @@ body {
   border-radius: 8px;
   box-shadow: 5px 5px grey;
 }
-  
+
 .key-list {
   display: flex;
   margin: auto;
@@ -115,25 +119,34 @@ body {
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes flipping {
   0% {
-      transform: rotateX(0deg);
+    transform: rotateX(0deg);
   }
+
   25% {
     transform: rotateX(45deg);
   }
+
   50% {
-      transform: rotateX(90deg);
+    transform: rotateX(90deg);
   }
-  75%{
+
+  75% {
     transform: rotateX(135);
   }
+
   100% {
-      transform: rotateX(0deg);
+    transform: rotateX(0deg);
   }
 }
 
@@ -164,7 +177,7 @@ body {
   animation: 0.5s linear flipping;
   animation-delay: 1.25s;
   transition-delay: 1500ms;
-  
+
 }
 
 .flip5 {
@@ -184,7 +197,11 @@ body {
   animation-delay: 2s;
   transition-delay: 2250ms;
 }
-/* 
-.winner-modal {
-  z-
-} */
+
+.container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 75px;
+  height: 90vh;
+}

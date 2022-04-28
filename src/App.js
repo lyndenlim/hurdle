@@ -175,6 +175,7 @@ function App() {
           />
         </Route>
         <Route exact path="/eight">
+          <div className="homepage-container">
           <EightLetters
             isDarkMode={isDarkMode}
             setIsDarkMode={setIsDarkMode}
@@ -199,6 +200,7 @@ function App() {
             setShowLoseModal={setShowLoseModal}
             rendererFunction={rendererFunction}
           />
+          </div>
         </Route>
       </Switch>
     </div>

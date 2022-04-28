@@ -107,7 +107,7 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
     }
 
     return (
-        <div>
+        <>
             <Navbar
                 bgColor={bgColor}
                 textColor={textColor}
@@ -154,10 +154,10 @@ function SevenLetters({ textColor, bgColor, word, pronunciation, english, def, i
                             setShowDictionary={setShowDictionary}
                         />
                     </div>
+                    <Keyboard func={concatWord} gameState={gameState} />
                 </div>
             </div>
-            <Keyboard func={concatWord} gameState={gameState} />
-        </div>
+        </>
     )
 }
 

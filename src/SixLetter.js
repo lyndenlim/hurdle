@@ -107,7 +107,7 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
     }
 
     return (
-        <div>
+        <>
             <Navbar
                 bgColor={bgColor}
                 textColor={textColor}
@@ -154,10 +154,10 @@ function SixLetters({ textColor, bgColor, word, pronunciation, english, def, isF
                             setShowDictionary={setShowDictionary}
                         />
                     </div>
+                <Keyboard func={concatWord} gameState={gameState} />
                 </div>
             </div>
-            <Keyboard func={concatWord} gameState={gameState} />
-        </div>
+        </>
     )
 }
 
